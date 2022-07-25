@@ -7,6 +7,10 @@ module.exports = {
     alias: {
       '@components': resolve('src/components'),
       '@interfaces': resolve('src/interfaces/'),
+      '@constants': resolve('src/constants/'),
+      '@store': resolve('src/store'),
+      '@utils': resolve('src/utils'),
+      '@hooks': resolve('src/hooks'),
     },
   },
 };

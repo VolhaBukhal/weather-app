@@ -3,7 +3,11 @@
         "baseUrl": "./src",
         "paths": {
             "@components/*" : ["components/*"],
-            "@interfaces/*": ["interfaces/*"]
+            "@interfaces": ["interfaces/*"],
+            "@constants/*": ["constants/*"],
+            "@store/*": ["store/*"],
+            "@utils/*": ["utils/*"],
+            "@hooks/*": ["hooks/*"],
         }
     }
 }

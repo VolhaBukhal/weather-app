@@ -1,3 +1,8 @@
-import { Button } from '@components/Button'
+import { Display } from '@components/Display'
+import { Container } from './styled'
 
-export const App = () => <Button label="wether app" />
+export const App = () => (
+  <Container>
+    <Display />
+  </Container>
+)
