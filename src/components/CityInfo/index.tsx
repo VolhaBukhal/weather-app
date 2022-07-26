@@ -1,44 +1,30 @@
-import { KeyboardEvent, useEffect, useState, useRef, RefObject, CSSProperties } from 'react'
-import ClipLoader from 'react-spinners/ClipLoader'
+import { KeyboardEvent, useEffect, useRef, RefObject } from 'react'
 
 import { useAppSelector, useAppDispatch } from '@hooks/redux.hooks'
-import { setLocation } from '@store/actions'
+import { setIsLoadingCity, setIsLoadingAccuWeather } from '@store/reducers/loadingSlice'
 import { setCity } from '@store/reducers/locationSlice'
-// import { IAccuWeatherData, IAccuWeatherCurrent } from '@interfaces/index'
-import { getCityAccuWeather, getAccuWeatherCurrentConditions } from '@utils/requests/weather'
 
-import { CityInfoContainer, CitySearch, Spinner } from './styled'
+import { Loader } from '@components/Loader'
 
-const override: CSSProperties = {
-  display: 'block',
-  margin: '0 auto',
-  color: 'green',
-}
+import { CityInfoContainer, CitySearch } from './styled'
 
 export const CityInfo = () => {
   // const [lat, setLat] = useState<number | null>(null)
   // const [long, setLong] = useState<number | null>(null)
   const { city, country } = useAppSelector((state) => state.location)
-  const { isLoading, error } = useAppSelector((state) => state.loading)
+  const { isLoadingCity, errorCity } = useAppSelector((state) => state.loading)
   const dispatch = useAppDispatch()
   const cityRef: RefObject<HTMLInputElement> = useRef(null)
-  const [temp, setTemp] = useState('')
-  const [curCountry, setCurCountry] = useState('')
 
   useEffect(() => {
-    dispatch(setLocation())
-  }, [])
+    dispatch(setIsLoadingCity())
+  }, [dispatch])
 
   useEffect(() => {
     if (city) {
-      getCityAccuWeather(city).then((data) => {
-        setCurCountry(data.Country.EnglishName)
-        getAccuWeatherCurrentConditions(data.Key).then((res) => {
-          setTemp(res.Temperature.Metric.Value?.toString())
-        })
-      })
+      dispatch(setIsLoadingAccuWeather())
     }
-  }, [city])
+  }, [city, dispatch])
 
   const handleEnterCity = (event: KeyboardEvent) => {
     if (event.key === 'Enter') {
@@ -51,18 +37,14 @@ export const CityInfo = () => {
 
   return (
     <CityInfoContainer>
-      {!error && !isLoading ? (
+      {!errorCity && !isLoadingCity ? (
         <>
-          <div>Minsk: {city}</div>
-          <div>Belarus: {country}</div>
-          <div>curCountry: {curCountry && curCountry}</div>
+          <div>City: {city}</div>
+          <div>Country: {country}</div>
           <CitySearch ref={cityRef} placeholder={city} onKeyPress={handleEnterCity} />
-          Temperature in city {city} now: {temp} &deg;C
         </>
       ) : (
-        <Spinner>
-          <ClipLoader cssOverride={override} color="#ffffff" />
-        </Spinner>
+        <Loader />
       )}
     </CityInfoContainer>
   )

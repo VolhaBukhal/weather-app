@@ -5,6 +5,12 @@ export interface ILocationData {
   lat: string
 }
 
+export interface IWeatherData {
+  accuweather: {
+    current: IAccuWeatherCurrent
+  }
+}
+
 export interface IAccuWeatherData {
   Key: string
   LocalizedName: string

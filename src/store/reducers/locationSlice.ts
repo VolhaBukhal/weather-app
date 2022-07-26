@@ -22,9 +22,12 @@ const locationSlice = createSlice({
     setCity: (state, action: PayloadAction<string>) => {
       state.city = action.payload
     },
+    setCountry: (state, action: PayloadAction<string>) => {
+      state.country = action.payload
+    },
   },
 })
 
-export const { setLocationFromIP, setCity } = locationSlice.actions
+export const { setLocationFromIP, setCity, setCountry } = locationSlice.actions
 
 export default locationSlice.reducer
