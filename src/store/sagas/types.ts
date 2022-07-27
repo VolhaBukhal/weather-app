@@ -1,8 +1,13 @@
-import { SelectEffect, CallEffect, PutEffect } from 'redux-saga/effects'
-import { IAccuWeatherData, IAccuWeatherCurrent } from '@interfaces/index'
+import { SelectEffect, CallEffect, PutEffect, ForkEffect } from 'redux-saga/effects'
+import {
+  IAccuWeatherData,
+  IAccuWeatherCurrent,
+  IAccuWeatherFiveDays,
+  IAccuWeatherOneHour,
+} from '@interfaces/index'
 
 export type AccuWeatherWorkerType = Generator<
-  SelectEffect | CallEffect | PutEffect,
+  SelectEffect | CallEffect | PutEffect | ForkEffect,
   void,
-  string | IAccuWeatherData | IAccuWeatherCurrent
+  string | IAccuWeatherData | IAccuWeatherCurrent | IAccuWeatherFiveDays | IAccuWeatherOneHour[]
 >

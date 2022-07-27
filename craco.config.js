@@ -11,6 +11,7 @@ module.exports = {
       '@store': resolve('src/store'),
       '@utils': resolve('src/utils'),
       '@hooks': resolve('src/hooks'),
+      '@hoc': resolve('src/hoc'),
       '@sagas': resolve('src/sagas')
     },
   },

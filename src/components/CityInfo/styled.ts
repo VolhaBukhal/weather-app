@@ -9,5 +9,3 @@ export const CityInfoContainer = styled.div`
 export const CitySearch = styled.input.attrs(({ ref }) => ({
   ref,
 }))``
-
-export const Spinner = styled.div``

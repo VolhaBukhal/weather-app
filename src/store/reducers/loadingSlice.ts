@@ -33,6 +33,9 @@ const loadingSlice = createSlice({
       state.errorCity = true
       state.isLoadingWeather = false
     },
+    resetError: (state) => {
+      state.errorCity = false
+    },
   },
 })
 
@@ -43,6 +46,7 @@ export const {
   setLoadingIsFinishedWeather,
   setErrorCity,
   setErrorWeather,
+  resetError,
 } = loadingSlice.actions
 
 export default loadingSlice.reducer

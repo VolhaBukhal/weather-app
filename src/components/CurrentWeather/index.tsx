@@ -1,13 +1,15 @@
-// import { useEffect } from 'react'
 import { useAppSelector } from '@hooks/redux.hooks'
 
 import { Loader } from '@components/Loader'
 
-export const WeatherToday = () => {
+import { TemperatureValue } from '@components/styled'
+
+export const CurrentWeather = () => {
   const { isLoadingWeather, errorWeather } = useAppSelector((state) => state.loading)
 
   const weather = useAppSelector((state) => state.weather)
   const { Value: temp } = weather.accuweather.current.Temperature.Metric
+  const { RelativeHumidity, Wind, WeatherText: descr } = weather.accuweather.current
 
   if (errorWeather) {
     return <p>Something wrong with weather request</p>
@@ -17,7 +19,17 @@ export const WeatherToday = () => {
     return <Loader />
   }
 
-  return <p>Current Weather temp: {Math.round(temp)} &deg;C</p>
+  return (
+    <>
+      <TemperatureValue>
+        {Math.round(temp)}&deg;C {descr.toLocaleLowerCase()}
+      </TemperatureValue>
+      <div>
+        Wind speed {Wind.Speed.Metric.Value} {Wind.Speed.Metric.Unit}
+      </div>
+      <div>Humidity {RelativeHumidity}%</div>
+    </>
+  )
 }
 
 // useEffect(() => {

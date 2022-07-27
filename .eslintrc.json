@@ -49,6 +49,7 @@
         "react/react-in-jsx-scope": "off",
         "spaced-comment": ["error", "always"],
         "react/function-component-definition": [2, { "namedComponents": "arrow-function" }],
+        "react/jsx-props-no-spreading": ["error", {"custom": "ignore"}],
         "no-param-reassign": [2, { "props": false }],
         "import/no-cycle": [2, { "maxDepth": 1 }],
         "import/prefer-default-export": "off"

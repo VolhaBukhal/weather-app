@@ -1,6 +1,10 @@
+import { RequireLoading } from '@hoc/RequireLoading'
+
 import { CityInfo } from '@components/CityInfo'
-import { WeatherToday } from '@components/WeatherToday'
-import { DisplayContainer, DisplayItem, DisplayItemColumn } from './styled'
+import { WeekForecast } from '@components/WeekForecast'
+import { HourlyForecast } from '@components/HourlyForecast'
+
+import { DisplayContainer, DisplayItem, DisplayItemColumn, DisplayItemShadowed } from './styled'
 
 export const Display = () => (
   <DisplayContainer>
@@ -11,12 +15,14 @@ export const Display = () => (
       </DisplayItemColumn>
       <CityInfo />
     </DisplayItem>
-    <DisplayItem>
-      <div>
-        Weather today
-        <WeatherToday />
-      </div>
-      <div>Forecast week</div>
-    </DisplayItem>
+
+    <DisplayItemShadowed>
+      <RequireLoading>
+        <HourlyForecast />
+      </RequireLoading>
+      <RequireLoading>
+        <WeekForecast />
+      </RequireLoading>
+    </DisplayItemShadowed>
   </DisplayContainer>
 )
