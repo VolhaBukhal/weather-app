@@ -1,12 +1,18 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { ILocationData } from '@interfaces/index'
+import { ILocationData, ILocationState } from '@interfaces/index'
 
-const initialState: ILocationData = {
+const initialState: ILocationState = {
   city: '',
   country: '',
   lon: '',
   lat: '',
+  defaultLocation: {
+    city: '',
+    country: '',
+    lon: '',
+    lat: '',
+  },
 }
 
 const locationSlice = createSlice({
@@ -16,8 +22,12 @@ const locationSlice = createSlice({
     setLocationFromIP: (state, action: PayloadAction<ILocationData>) => {
       state.city = action.payload.city
       state.country = action.payload.country
-      state.lon = action.payload.lon
-      state.lat = action.payload.lat
+      state.lon = action.payload.longitude
+      state.lat = action.payload.latitude
+      state.defaultLocation.city = action.payload.city
+      state.defaultLocation.country = action.payload.country
+      state.defaultLocation.lon = action.payload.longitude
+      state.defaultLocation.lat = action.payload.latitude
     },
     setCity: (state, action: PayloadAction<string>) => {
       state.city = action.payload
@@ -25,9 +35,15 @@ const locationSlice = createSlice({
     setCountry: (state, action: PayloadAction<string>) => {
       state.country = action.payload
     },
+    setDefaultLocation: (state) => {
+      state.city = state.defaultLocation.city
+      state.country = state.defaultLocation.country
+      state.lat = state.defaultLocation.lat
+      state.lon = state.defaultLocation.lon
+    },
   },
 })
 
-export const { setLocationFromIP, setCity, setCountry } = locationSlice.actions
+export const { setLocationFromIP, setCity, setCountry, setDefaultLocation } = locationSlice.actions
 
 export default locationSlice.reducer

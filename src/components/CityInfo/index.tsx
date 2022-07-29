@@ -4,9 +4,10 @@ import { useAppSelector, useAppDispatch } from '@hooks/redux.hooks'
 import { setIsLoadingCity, setIsLoadingAccuWeather } from '@store/reducers/loadingSlice'
 import { setCity } from '@store/reducers/locationSlice'
 
+import { RequireLoading } from '@hoc/RequireLoading'
+
 import { CurrentWeather } from '@components/CurrentWeather'
 import { Loader } from '@components/Loader'
-import { Toast } from '@components/Toast'
 
 import { CityInfoContainer, CitySearch } from './styled'
 
@@ -17,10 +18,12 @@ export const CityInfo = () => {
   const cityRef: RefObject<HTMLInputElement> = useRef(null)
 
   useEffect(() => {
+    console.log('setIsLoadingCity')
     dispatch(setIsLoadingCity())
   }, [dispatch])
 
   useEffect(() => {
+    console.log('in useEffect with setIsLoadingAccuWeather')
     if (city) {
       dispatch(setIsLoadingAccuWeather())
     }
@@ -35,8 +38,7 @@ export const CityInfo = () => {
     }
   }
 
-  // const errorMessage = errorCity ? <ErrorMessage /> : null
-  const errorMessage = errorCity ? <Toast /> : null
+  const errorMessage = errorCity ? <div>There is no such city. Back to location!</div> : null
   const spinner = isLoadingCity ? <Loader /> : null
   const content =
     !errorCity && !isLoadingCity ? (
@@ -44,7 +46,9 @@ export const CityInfo = () => {
         <div>City: {city}</div>
         <div>Country: {country}</div>
         <CitySearch ref={cityRef} placeholder={city} onKeyPress={handleEnterCity} />
-        <CurrentWeather />
+        <RequireLoading>
+          <CurrentWeather />
+        </RequireLoading>
       </>
     ) : null
 

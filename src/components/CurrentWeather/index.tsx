@@ -1,28 +1,36 @@
 import { useAppSelector } from '@hooks/redux.hooks'
 
-import { Loader } from '@components/Loader'
+// import { Loader } from '@components/Loader'
 
 import { TemperatureValue } from '@components/styled'
+import { WeatherDescription } from './styled'
 
 export const CurrentWeather = () => {
-  const { isLoadingWeather, errorWeather } = useAppSelector((state) => state.loading)
-
+  // const { isLoadingWeather, errorWeather } = useAppSelector((state) => state.loading)
   const weather = useAppSelector((state) => state.weather)
-  const { Value: temp } = weather.accuweather.current.Temperature.Metric
-  const { RelativeHumidity, Wind, WeatherText: descr } = weather.accuweather.current
+  const { city } = useAppSelector((state) => state.location)
+  // // eslint-disable-next-line no-debugger
+  // debugger
+  const { Value: temp } = weather.accuweather[city].current.Temperature.Metric
+  const { RelativeHumidity, Wind, WeatherText: descr } = weather.accuweather[city].current
 
-  if (errorWeather) {
-    return <p>Something wrong with weather request</p>
-  }
+  // if (errorWeather) {
+  //   return <p>Something wrong with weather request</p>
+  // }
 
-  if (isLoadingWeather) {
-    return <Loader />
+  // if (isLoadingWeather) {
+  //   return <Loader />
+  // }
+
+  if (!city) {
+    return null
   }
 
   return (
     <>
       <TemperatureValue>
-        {Math.round(temp)}&deg;C {descr.toLocaleLowerCase()}
+        {Math.round(temp)}&deg;C
+        <WeatherDescription>{descr.toLocaleLowerCase()}</WeatherDescription>
       </TemperatureValue>
       <div>
         Wind speed {Wind.Speed.Metric.Value} {Wind.Speed.Metric.Unit}

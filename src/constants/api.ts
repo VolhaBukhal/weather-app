@@ -1,6 +1,7 @@
 export const LANGUAGE_RU = 'ru-RU'
 
-export const IP_LOCATION_URL = 'http://ip-api.com/json/?fields=status,country,city,lat,lon'
+export const IP_LOCATION_URL = 'https://ipgeolocation.abstractapi.com/v1/'
+export const IP_LOCATION_KEY = 'a6512e70f15f4f28a4d6054a90274d80'
 
 // stormglass
 export const STORMGLASS_KEY =
@@ -28,7 +29,7 @@ export const ACCUWEATHER_URL_HOURLY =
 
 // http://dataservice.accuweather.com/forecasts/v1/hourly/12hour/308526?apikey=HmFHecUv5pqduwVumvOmETAUc4HNa6J1&metric=true
 
-export const ACCUWEATHER_KEY = 'HmFHecUv5pqduwVumvOmETAUc4HNa6J1'
+export const ACCUWEATHER_KEY = 'txNmrqSx92YTGiTienrfqzTZz2GMGFVe'
 
 //   http://dataservice.accuweather.com/currentconditions/v1/{keyOfCityGetFromSearchRequest}
 // &language=ru-RU

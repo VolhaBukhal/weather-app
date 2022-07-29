@@ -16,7 +16,6 @@ import {
 
 export const getCityAccuWeather = async (city: string): Promise<IAccuWeatherData> => {
   const baseURL = ACCUWEATHER_URL_CITY_SEARCH
-  //   const query = `?apikey=${ACCUWEATHER_KEY}&q=${city}&language=${LANGUAGE_RU}`
   const query = `?apikey=${ACCUWEATHER_KEY}&q=${city}`
 
   const response = await fetch(`${baseURL}${query}`, { headers })

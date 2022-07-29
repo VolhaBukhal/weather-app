@@ -1,16 +1,32 @@
-export interface ILocationData {
+export interface ILocationState {
   city: string
   country: string
   lon: string
   lat: string
+  defaultLocation: {
+    city: string
+    country: string
+    lon: string
+    lat: string
+  }
+}
+export interface ILocationData {
+  city: string
+  country: string
+  longitude: string
+  latitude: string
 }
 
 export interface IWeatherData {
   accuweather: {
-    current: IAccuWeatherCurrent
-    fiveDays: IAccuWeatherFiveDays
-    hourly: IAccuWeatherOneHour[]
+    [city: string]: IWeatherCity
   }
+}
+
+export interface IWeatherCity {
+  current: IAccuWeatherCurrent
+  fiveDays: IAccuWeatherFiveDays
+  hourly: IAccuWeatherOneHour[]
 }
 
 export interface IAccuWeatherData {

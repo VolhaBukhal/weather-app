@@ -1,67 +1,91 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import {
-  IAccuWeatherCurrent,
+  // IAccuWeatherPayload,
+  // IAccuWeatherCurrent,
   IWeatherData,
-  IAccuWeatherFiveDays,
-  IAccuWeatherOneHour,
+  // IAccuWeatherFiveDays,
+  // IAccuWeatherOneHour,
+  IWeatherCity,
 } from '@interfaces/index'
 
 const initialState: IWeatherData = {
-  accuweather: {
-    current: {
-      WeatherText: '',
-      IsDayTime: true,
-      WeatherIcon: 1,
-      Temperature: {
-        Metric: {
-          Value: 1,
-          Unit: '',
-        },
-      },
-      RealFeelTemperature: {
-        Metric: {
-          Value: 1,
-          Phrase: '',
-        },
-      },
-      RelativeHumidity: 1,
-      Wind: {
-        Speed: {
-          Metric: {
-            Value: 1,
-            Unit: '',
-          },
-        },
-      },
-    },
-    fiveDays: {
-      Headline: {
-        Text: '',
-      },
-      DailyForecasts: [],
-    },
-    hourly: [],
-  },
+  accuweather: {},
 }
+
+// current: {
+//   WeatherText: '',
+//   IsDayTime: true,
+//   WeatherIcon: 1,
+//   Temperature: {
+//     Metric: {
+//       Value: 1,
+//       Unit: '',
+//     },
+//   },
+//   RealFeelTemperature: {
+//     Metric: {
+//       Value: 1,
+//       Phrase: '',
+//     },
+//   },
+//   RelativeHumidity: 1,
+//   Wind: {
+//     Speed: {
+//       Metric: {
+//         Value: 1,
+//         Unit: '',
+//       },
+//     },
+//   },
+// },
+// fiveDays: {
+//   Headline: {
+//     Text: '',
+//   },
+//   DailyForecasts: [],
+// },
+// hourly: [],
 
 const weatherSlice = createSlice({
   name: 'weather',
   initialState,
   reducers: {
-    setCurrentAccuWeather: (state, action: PayloadAction<IAccuWeatherCurrent>) => {
-      state.accuweather.current = action.payload
+    setAccuWeather: (state, action: PayloadAction<{ city: string; weather: IWeatherCity }>) => {
+      const { city } = action.payload
+      const { weather } = action.payload
+      console.log('[city in setCurrentAccuWeather and weather]: ', city, weather)
+      state.accuweather[city] = weather
     },
-    setFiveDaysAccuWeather: (state, action: PayloadAction<IAccuWeatherFiveDays>) => {
-      state.accuweather.fiveDays = action.payload
-    },
-    setHourlyAccuWeather: (state, action: PayloadAction<IAccuWeatherOneHour[]>) => {
-      state.accuweather.hourly = action.payload
-    },
+
+    // setCurrentAccuWeather: (
+    //   state,
+    //   action: PayloadAction<{ city: string; weather: IAccuWeatherCurrent }>
+    // ) => {
+    //   const { city } = action.payload
+    //   const { weather } = action.payload
+    //   console.log('[city in setCurrentAccuWeather and weather]: ', city, weather)
+    //   state.accuweather[city].current = weather
+    // },
+    // setFiveDaysAccuWeather: (
+    //   state,
+    //   action: PayloadAction<{ city: string; weather: IAccuWeatherFiveDays }>
+    // ) => {
+    //   state.accuweather[action.payload.city].fiveDays = action.payload.weather
+    // },
+    // setHourlyAccuWeather: (
+    //   state,
+    //   action: PayloadAction<{ city: string; weather: IAccuWeatherOneHour[] }>
+    // ) => {
+    //   state.accuweather[action.payload.city].hourly = action.payload.weather
+    // },
   },
 })
 
-export const { setCurrentAccuWeather, setFiveDaysAccuWeather, setHourlyAccuWeather } =
-  weatherSlice.actions
+export const {
+  setAccuWeather,
+  //  setFiveDaysAccuWeather,
+  // setHourlyAccuWeather
+} = weatherSlice.actions
 
 export default weatherSlice.reducer
