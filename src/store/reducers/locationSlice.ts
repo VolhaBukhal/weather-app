@@ -7,6 +7,7 @@ const initialState: ILocationState = {
   country: '',
   lon: '',
   lat: '',
+  weatherIcon: 2,
   defaultLocation: {
     city: '',
     country: '',

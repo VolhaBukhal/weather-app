@@ -3,6 +3,7 @@ export interface ILocationState {
   country: string
   lon: string
   lat: string
+  weatherIcon: number
   defaultLocation: {
     city: string
     country: string

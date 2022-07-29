@@ -29,7 +29,7 @@ export const ACCUWEATHER_URL_HOURLY =
 
 // http://dataservice.accuweather.com/forecasts/v1/hourly/12hour/308526?apikey=HmFHecUv5pqduwVumvOmETAUc4HNa6J1&metric=true
 
-export const ACCUWEATHER_KEY = 'txNmrqSx92YTGiTienrfqzTZz2GMGFVe'
+export const ACCUWEATHER_KEY = 'TeDmxggVJjd0GcXBTrtmQEQ2tf8lKGAf'
 
 //   http://dataservice.accuweather.com/currentconditions/v1/{keyOfCityGetFromSearchRequest}
 // &language=ru-RU

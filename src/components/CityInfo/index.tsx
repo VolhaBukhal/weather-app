@@ -9,7 +9,7 @@ import { RequireLoading } from '@hoc/RequireLoading'
 import { CurrentWeather } from '@components/CurrentWeather'
 import { Loader } from '@components/Loader'
 
-import { CityInfoContainer, CitySearch } from './styled'
+import { CityInfoContainer, CitySearch, City, Country } from './styled'
 
 export const CityInfo = () => {
   const { city, country } = useAppSelector((state) => state.location)
@@ -18,12 +18,10 @@ export const CityInfo = () => {
   const cityRef: RefObject<HTMLInputElement> = useRef(null)
 
   useEffect(() => {
-    console.log('setIsLoadingCity')
     dispatch(setIsLoadingCity())
   }, [dispatch])
 
   useEffect(() => {
-    console.log('in useEffect with setIsLoadingAccuWeather')
     if (city) {
       dispatch(setIsLoadingAccuWeather())
     }
@@ -43,9 +41,9 @@ export const CityInfo = () => {
   const content =
     !errorCity && !isLoadingCity ? (
       <>
-        <div>City: {city}</div>
-        <div>Country: {country}</div>
-        <CitySearch ref={cityRef} placeholder={city} onKeyPress={handleEnterCity} />
+        <City> {city}</City>
+        <Country> {country}</Country>
+        <CitySearch ref={cityRef} placeholder={city} onKeyPress={handleEnterCity} type="search" />
         <RequireLoading>
           <CurrentWeather />
         </RequireLoading>

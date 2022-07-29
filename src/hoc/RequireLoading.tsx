@@ -13,8 +13,10 @@ export const RequireLoading = ({ children }: RequireLoadingProps) => {
 
   const dataIsAsent = !weather.accuweather[city]
 
-  const errorMessage = errorWeather ? <p>Something wrong with request</p> : null
-  const spinner = isLoadingWeather || dataIsAsent ? <Loader /> : null
+  const errorMessage = errorWeather ? (
+    <p>Something wrong with request... Choose another API!</p>
+  ) : null
+  const spinner = isLoadingWeather || (dataIsAsent && !errorWeather) ? <Loader /> : null
   const content = !errorWeather && !isLoadingWeather && !dataIsAsent ? <>{children} </> : null
 
   return (

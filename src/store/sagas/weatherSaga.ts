@@ -8,7 +8,7 @@ import {
 } from '@utils/api/weather'
 import {
   setIsLoadingAccuWeather,
-  // setErrorWeather,
+  setErrorWeather,
   setErrorCity,
   resetError,
   setLoadingIsFinishedWeather,
@@ -84,7 +84,7 @@ function* getWeatherFromAccuWeatherWorker(): AccuWeatherWorkerType {
       yield put(resetError())
     }
   } catch {
-    // yield put(setErrorWeather())
+    yield put(setErrorWeather())
     console.log('error in getting Wather')
   }
 }

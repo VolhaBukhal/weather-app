@@ -30,7 +30,7 @@ const loadingSlice = createSlice({
       state.isLoadingCity = false
     },
     setErrorWeather: (state) => {
-      state.errorCity = true
+      state.errorWeather = true
       state.isLoadingWeather = false
     },
     resetError: (state) => {

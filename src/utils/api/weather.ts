@@ -25,14 +25,23 @@ export const getCityAccuWeather = async (city: string): Promise<IAccuWeatherData
 
 export const getAccuWeatherCurrentConditions = async (
   cityId: string
-): Promise<IAccuWeatherCurrent> => {
+): Promise<IAccuWeatherCurrent | Error> => {
   const baseURL = ACCUWEATHER_URL_CURRENT_CONDITION
   const query = `${cityId}?apikey=${ACCUWEATHER_KEY}&details=true`
 
-  const response = await fetch(`${baseURL}${query}`, { headers })
+  try {
+    const response = await fetch(`${baseURL}${query}`, { headers })
+    console.log('response: ', response)
+    if (!response.ok) {
+      throw Error('Error happened')
+    }
 
-  const data: IAccuWeatherCurrent[] = await response.json()
-  return data[0]
+    const data: IAccuWeatherCurrent[] = await response.json()
+    return data[0]
+  } catch (e) {
+    console.log(e)
+    return new Error(`Numbers amounts are ended ${e}`)
+  }
 }
 
 export const getAccuWeatherFiveDays = async (cityId: string): Promise<IAccuWeatherFiveDays> => {
