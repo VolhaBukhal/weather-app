@@ -31,7 +31,6 @@ export const getAccuWeatherCurrentConditions = async (
 
   try {
     const response = await fetch(`${baseURL}${query}`, { headers })
-    console.log('response: ', response)
     if (!response.ok) {
       throw Error('Error happened')
     }

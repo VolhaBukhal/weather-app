@@ -37,8 +37,14 @@ export function getDayNameFromString(date: string | number) {
 function makeDoubleSignsNumberFromSingle(number: number) {
   return number < 10 ? `0${number}` : number.toString()
 }
-export function getTimeFromString(time: string | number) {
-  const curTime = new Date(time)
+
+export function getHourFromString(time: string | number) {
+  let curTime
+  if (typeof time === 'number') {
+    curTime = new Date(time * 1000)
+  } else {
+    curTime = new Date(time)
+  }
   const hours = curTime.getHours()
   return makeDoubleSignsNumberFromSingle(hours)
 }
@@ -47,5 +53,41 @@ export function getDigitClockFromString(time: Date) {
   const hours = time.getHours()
   const minutes = time.getMinutes()
   return `
-  ${makeDoubleSignsNumberFromSingle(hours)}:${makeDoubleSignsNumberFromSingle(minutes)}`
+  ${makeDoubleSignsNumberFromSingle(hours % 12 || 12)}:${makeDoubleSignsNumberFromSingle(minutes)}`
+}
+
+export function getLocalHourForHourlyForecastOpenWeather(time: number, timeOffset: number) {
+  const curHour = new Date(time * 1000)
+  const hours = curHour.getHours()
+  const offSetInHours = timeOffset / 3600
+  const localOffSet = curHour.getTimezoneOffset() / 60
+
+  const dif = offSetInHours + localOffSet
+  const localHours = hours + dif
+  return localHours > 12
+    ? makeDoubleSignsNumberFromSingle(localHours % 12)
+    : makeDoubleSignsNumberFromSingle(localHours)
+}
+
+export function getLocalTimeAccuWeather(time: string) {
+  const date = new Date(time)
+  // eslint-disable-next-line no-debugger
+  debugger
+  return getDigitClockFromString(date)
+}
+
+export function getLocalTimeOpenWeather(offSet: number) {
+  const now = new Date()
+  const hours = now.getHours()
+  const minutes = now.getMinutes()
+  const localOffSetFromUTC = now.getTimezoneOffset() / 60 // in hours
+  const incomeOffSet = offSet / 3600 // from api comes in ms
+
+  const dif = incomeOffSet + localOffSetFromUTC
+  const curHours =
+    hours + dif > 24
+      ? makeDoubleSignsNumberFromSingle((hours + dif) % 24)
+      : makeDoubleSignsNumberFromSingle(hours + dif)
+
+  return `${curHours}:${makeDoubleSignsNumberFromSingle(minutes)}`
 }

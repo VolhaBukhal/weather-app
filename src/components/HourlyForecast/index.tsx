@@ -1,7 +1,7 @@
 import { v4 as uuid } from 'uuid'
 
 import { useAppSelector } from '@hooks/redux.hooks'
-import { getTimeFromString } from '@utils/time'
+import { getHourFromString, getLocalHourForHourlyForecastOpenWeather } from '@utils/time'
 import { APIs } from '@constants/api'
 
 import { IconSmall, TemperatureValue, IconSmallOpenWeather } from '@components/styled'
@@ -17,7 +17,7 @@ export const HourlyForecast = () => {
     hourlyAccuWeather &&
     hourlyAccuWeather.map(({ DateTime: time, WeatherIcon, Temperature }) => (
       <Item key={uuid()}>
-        <div>{getTimeFromString(time)}</div>
+        <div>{getHourFromString(time)}</div>
         <IconSmall iconNumber={WeatherIcon} />
         <TemperatureValue>{Math.round(Temperature.Value).toString()}&deg;</TemperatureValue>
       </Item>
@@ -27,7 +27,12 @@ export const HourlyForecast = () => {
     hourlyOpenWeather &&
     hourlyOpenWeather.slice(0, 24).map(({ dt: time, temp, weather: weatherHour }) => (
       <Item key={uuid()}>
-        <div>{getTimeFromString(time as number)}</div>
+        <div>
+          {getLocalHourForHourlyForecastOpenWeather(
+            time,
+            weather.openweather[city].timezone_offset
+          )}
+        </div>
         <IconSmallOpenWeather iconNumber={weatherHour[0].icon} />
         <TemperatureValue>{Math.round(temp).toString()}&deg;</TemperatureValue>
       </Item>

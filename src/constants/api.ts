@@ -33,4 +33,4 @@ export const ACCUWEATHER_URL_FIVE_DAY =
 export const ACCUWEATHER_URL_HOURLY =
   'http://dataservice.accuweather.com/forecasts/v1/hourly/12hour/'
 
-export const ACCUWEATHER_KEY = 'TeDmxggVJjd0GcXBTrtmQEQ2tf8lKGAf'
+export const ACCUWEATHER_KEY = 'wy5LWu7ZTe8NNkisxMtcLQ6F9A7GNzLi'

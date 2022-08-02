@@ -121,6 +121,7 @@ interface IOpenWeatherOneDay {
 }
 
 export interface IOpenWeatherAll {
+  timezone_offset: number
   current: {
     dt: 1659161344
     sunrise: 1659147652
@@ -207,6 +208,7 @@ export interface IAccuWeatherData {
 }
 
 export interface IAccuWeatherCurrent {
+  LocalObservationDateTime: string
   WeatherText: string
   IsDayTime: boolean
   WeatherIcon: number

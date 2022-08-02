@@ -46,7 +46,7 @@ export const RadioButton = styled.input`
     border: 2px solid yellowgreen;
   }
   &:checked + ${RadioButtonLabel} {
-    background: darkorange;
+    background: ${({ theme }) => theme.colors.darkorange};
     border: 3px solid white;
     &::after {
       display: block;
