@@ -1,14 +1,37 @@
-import { IAccuWeatherOneDay } from '@interfaces/index'
+import { IAccuWeatherOneDay, IOpenWeatherOneDayItem } from '@interfaces/index'
 
-import { getDayNameFromString } from '@utils/time/getDayName'
+import { useAppSelector } from '@hooks/redux.hooks'
+import { APIs } from '@constants/api'
+import { getDayNameFromString } from '@utils/time'
 
-import { Icon, TemperatureValueBig } from '@components/styled'
+import { Icon, IconOpenWeather, TemperatureValueBig } from '@components/styled'
 import { Item, DayName } from './styled'
 
-export const ForecastItem = ({ Date, Temperature, Day }: IAccuWeatherOneDay) => (
-  <Item>
-    <DayName>{getDayNameFromString(Date)}</DayName>
-    <Icon iconNumber={Day.Icon} />
-    <TemperatureValueBig> {Math.round(Temperature.Maximum.Value)} &deg;</TemperatureValueBig>
-  </Item>
-)
+export const ForecastItem = (day: unknown) => {
+  const { curAPI } = useAppSelector((state) => state.location)
+
+  const date =
+    curAPI === APIs.ACCUWEATHER
+      ? ((day as IAccuWeatherOneDay).Date as string)
+      : ((day as IOpenWeatherOneDayItem).dt as number)
+  const icon =
+    curAPI === APIs.ACCUWEATHER
+      ? (day as IAccuWeatherOneDay).Day.Icon
+      : (day as IOpenWeatherOneDayItem).weather[0].icon
+  const temp =
+    curAPI === APIs.ACCUWEATHER
+      ? (day as IAccuWeatherOneDay).Temperature.Maximum.Value
+      : (day as IOpenWeatherOneDayItem).temp.day
+
+  return (
+    <Item>
+      <DayName>{getDayNameFromString(date)}</DayName>
+      {curAPI === APIs.ACCUWEATHER ? (
+        <Icon iconNumber={icon} />
+      ) : (
+        <IconOpenWeather iconNumber={icon} />
+      )}
+      <TemperatureValueBig> {Math.round(temp)} &deg;</TemperatureValueBig>
+    </Item>
+  )
+}

@@ -12,7 +12,6 @@ import { fetchInitialLocation } from '@utils/api/location'
 import { ILocationData } from '@interfaces/index'
 
 function* getInitialLocationWorker() {
-  console.log('in getInitialLocationWorker')
   try {
     const result: ILocationData = yield call(fetchInitialLocation)
     if (result) {

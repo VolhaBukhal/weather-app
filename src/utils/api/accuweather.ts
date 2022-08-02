@@ -55,8 +55,6 @@ export const getAccuWeatherFiveDays = async (cityId: string): Promise<IAccuWeath
   return data
 }
 
-// http://dataservice.accuweather.com/forecasts/v1/hourly/12hour/308526?apikey=HmFHecUv5pqduwVumvOmETAUc4HNa6J1&metric=true
-
 export const getAccuWeatherHourly = async (cityId: string): Promise<IAccuWeatherOneHour[]> => {
   const baseURL = ACCUWEATHER_URL_HOURLY
 

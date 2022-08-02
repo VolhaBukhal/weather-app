@@ -3,6 +3,7 @@ import { RequireLoading } from '@hoc/RequireLoading'
 import { CityInfo } from '@components/CityInfo'
 import { WeekForecast } from '@components/WeekForecast'
 import { HourlyForecast } from '@components/HourlyForecast'
+import { Clock } from '@components/Clock'
 
 import { DisplayContainer, DisplayItem, DisplayItemColumn, DisplayItemShadowed } from './styled'
 
@@ -10,7 +11,7 @@ export const Display = () => (
   <DisplayContainer>
     <DisplayItem>
       <DisplayItemColumn>
-        <div>Clock</div>
+        <Clock />
         <div>Calender</div>
       </DisplayItemColumn>
       <CityInfo />

@@ -9,6 +9,6 @@ export const theme = {
     dark: '#374B57',
   },
   spaces: [0, 4, 8, 16, 32, 64, 128],
-  fontSizes: [12, 14, 16, 20, 24, 32, 40, 48],
+  fontSizes: [12, 14, 16, 20, 24, 32, 40, 48, 56],
   borderRadius: 10,
 }

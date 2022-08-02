@@ -3,7 +3,8 @@ export interface ILocationState {
   country: string
   lon: string
   lat: string
-  weatherIcon: number
+  curAPI: string
+  curIcon: string | number
   defaultLocation: {
     city: string
     country: string
@@ -20,14 +21,175 @@ export interface ILocationData {
 
 export interface IWeatherData {
   accuweather: {
-    [city: string]: IWeatherCity
+    [city: string]: IAccuWeatherCity
+  }
+  openweather: {
+    [city: string]: IOpenWeatherAll
   }
 }
 
-export interface IWeatherCity {
+export type IWeatherDataKeys = keyof IWeatherData
+
+export interface IAccuWeatherCity {
   current: IAccuWeatherCurrent
-  fiveDays: IAccuWeatherFiveDays
+  daily: IAccuWeatherFiveDays
   hourly: IAccuWeatherOneHour[]
+  country: string
+}
+
+export interface IOpenWeatherCurrent {
+  coord: {
+    lon: number
+    lat: number
+  }
+  weather: [
+    {
+      id: number
+      main: 'Clouds'
+      description: 'overcast clouds'
+      icon: '04d'
+    }
+  ]
+  main: {
+    temp: 8.48
+    feels_like: 4.9
+    humidity: 79
+  }
+  wind: {
+    speed: 7.3
+    deg: 189
+  }
+  sys: {
+    type: 2
+    id: 2031790
+    country: 'GB'
+    sunrise: 1647325488
+    sunset: 1647367827
+  }
+}
+export interface IOpenWeatherFiveDays {
+  city: {
+    id: 2641549
+    name: 'Newtonhill'
+    coord: {
+      lon: -2.15
+      lat: 57
+    }
+    country: 'GB'
+    population: 3284
+    timezone: 0
+  }
+  cod: '200'
+  message: 18.7713997
+  cnt: 3
+  list: IOpenWeatherOneDay[]
+}
+
+interface IOpenWeatherOneDay {
+  dt: 1647345600
+  sunrise: 1647325488
+  sunset: 1647367827
+  temp: {
+    day: 7.89
+    min: 3.93
+    max: 8.83
+    night: 7.21
+    eve: 8.08
+    morn: 4.03
+  }
+  feels_like: {
+    day: 4.06
+    night: 3.59
+    eve: 4.7
+    morn: -0.13
+  }
+  humidity: 78
+  weather: [
+    {
+      id: 500
+      main: 'Rain'
+      description: 'light rain'
+      icon: '10d'
+    }
+  ]
+  speed: 7.61
+  deg: 194
+  gust: 13.48
+  clouds: 96
+  pop: 0.42
+  rain: 0.29
+}
+
+export interface IOpenWeatherAll {
+  current: {
+    dt: 1659161344
+    sunrise: 1659147652
+    sunset: 1659204344
+    temp: 17.86
+    feels_like: 17.48
+    pressure: 1020
+    humidity: 68
+    wind_speed: 2.13
+    weather: [
+      {
+        id: 804
+        main: 'Clouds'
+        description: 'overcast clouds'
+        icon: '04d'
+      }
+    ]
+  }
+  hourly: IOpenWeatherOneHourItem[]
+  daily: IOpenWeatherOneDayItem[]
+  country: string
+}
+
+export interface IOpenWeatherOneHourItem {
+  dt: 1659330000
+  temp: 18.33
+  feels_like: 18.07
+  pressure: 1012
+  humidity: 71
+  dew_point: 12.98
+  uvi: 0.38
+  clouds: 100
+  visibility: 10000
+  wind_speed: 3.21
+  wind_deg: 138
+  wind_gust: 8.3
+  weather: [
+    {
+      id: 804
+      main: 'Clouds'
+      description: 'overcast clouds'
+      icon: '04d'
+    }
+  ]
+  pop: 0
+}
+
+export interface IOpenWeatherOneDayItem {
+  dt: 1659175200
+  temp: {
+    day: 22.52
+  }
+  humidity: 53
+  wind_speed: 3.4
+  weather: [
+    {
+      id: 804
+      main: 'Clouds'
+      description: 'overcast clouds'
+      icon: '04d'
+    }
+  ]
+}
+
+export interface IOpenWeatherCoordinates {
+  name: string
+  lat: number
+  lon: number
+  country: string
 }
 
 export interface IAccuWeatherData {
@@ -112,198 +274,3 @@ export interface IAccuWeatherOneHour {
     Unit: string
   }
 }
-
-// [
-//   {
-//     "DateTime": "2022-07-27T11:00:00+02:00",
-//     "EpochDateTime": 1658912400,
-//     "WeatherIcon": 2,
-//     "IconPhrase": "Mostly sunny",
-//     "HasPrecipitation": false,
-//     "IsDaylight": true,
-//     "Temperature": {
-//       "Value": 26.9,
-//       "Unit": "C",
-//       "UnitType": 17
-//     },
-//     "PrecipitationProbability": 0,
-//     "MobileLink": "http://www.accuweather.com/en/es/madrid/308526/hourly-weather-forecast/308526?day=1&hbhhour=11&unit=c&lang=en-us",
-//     "Link": "http://www.accuweather.com/en/es/madrid/308526/hourly-weather-forecast/308526?day=1&hbhhour=11&unit=c&lang=en-us"
-//   },
-//   {
-//     "DateTime": "2022-07-27T12:00:00+02:00",
-//     "EpochDateTime": 1658916000,
-//     "WeatherIcon": 2,
-//     "IconPhrase": "Mostly sunny",
-//     "HasPrecipitation": false,
-//     "IsDaylight": true,
-//     "Temperature": {
-//       "Value": 28.2,
-//       "Unit": "C",
-//       "UnitType": 17
-//     },
-//     "PrecipitationProbability": 0,
-//     "MobileLink": "http://www.accuweather.com/en/es/madrid/308526/hourly-weather-forecast/308526?day=1&hbhhour=12&unit=c&lang=en-us",
-//     "Link": "http://www.accuweather.com/en/es/madrid/308526/hourly-weather-forecast/308526?day=1&hbhhour=12&unit=c&lang=en-us"
-//   },
-//   {
-//     "DateTime": "2022-07-27T13:00:00+02:00",
-//     "EpochDateTime": 1658919600,
-//     "WeatherIcon": 1,
-//     "IconPhrase": "Sunny",
-//     "HasPrecipitation": false,
-//     "IsDaylight": true,
-//     "Temperature": {
-//       "Value": 29.5,
-//       "Unit": "C",
-//       "UnitType": 17
-//     },
-//     "PrecipitationProbability": 0,
-//     "MobileLink": "http://www.accuweather.com/en/es/madrid/308526/hourly-weather-forecast/308526?day=1&hbhhour=13&unit=c&lang=en-us",
-//     "Link": "http://www.accuweather.com/en/es/madrid/308526/hourly-weather-forecast/308526?day=1&hbhhour=13&unit=c&lang=en-us"
-//   },
-//   {
-//     "DateTime": "2022-07-27T14:00:00+02:00",
-//     "EpochDateTime": 1658923200,
-//     "WeatherIcon": 1,
-//     "IconPhrase": "Sunny",
-//     "HasPrecipitation": false,
-//     "IsDaylight": true,
-//     "Temperature": {
-//       "Value": 30.7,
-//       "Unit": "C",
-//       "UnitType": 17
-//     },
-//     "PrecipitationProbability": 0,
-//     "MobileLink": "http://www.accuweather.com/en/es/madrid/308526/hourly-weather-forecast/308526?day=1&hbhhour=14&unit=c&lang=en-us",
-//     "Link": "http://www.accuweather.com/en/es/madrid/308526/hourly-weather-forecast/308526?day=1&hbhhour=14&unit=c&lang=en-us"
-//   },
-//   {
-//     "DateTime": "2022-07-27T15:00:00+02:00",
-//     "EpochDateTime": 1658926800,
-//     "WeatherIcon": 1,
-//     "IconPhrase": "Sunny",
-//     "HasPrecipitation": false,
-//     "IsDaylight": true,
-//     "Temperature": {
-//       "Value": 31.9,
-//       "Unit": "C",
-//       "UnitType": 17
-//     },
-//     "PrecipitationProbability": 0,
-//     "MobileLink": "http://www.accuweather.com/en/es/madrid/308526/hourly-weather-forecast/308526?day=1&hbhhour=15&unit=c&lang=en-us",
-//     "Link": "http://www.accuweather.com/en/es/madrid/308526/hourly-weather-forecast/308526?day=1&hbhhour=15&unit=c&lang=en-us"
-//   },
-//   {
-//     "DateTime": "2022-07-27T16:00:00+02:00",
-//     "EpochDateTime": 1658930400,
-//     "WeatherIcon": 1,
-//     "IconPhrase": "Sunny",
-//     "HasPrecipitation": false,
-//     "IsDaylight": true,
-//     "Temperature": {
-//       "Value": 33,
-//       "Unit": "C",
-//       "UnitType": 17
-//     },
-//     "PrecipitationProbability": 0,
-//     "MobileLink": "http://www.accuweather.com/en/es/madrid/308526/hourly-weather-forecast/308526?day=1&hbhhour=16&unit=c&lang=en-us",
-//     "Link": "http://www.accuweather.com/en/es/madrid/308526/hourly-weather-forecast/308526?day=1&hbhhour=16&unit=c&lang=en-us"
-//   },
-//   {
-//     "DateTime": "2022-07-27T17:00:00+02:00",
-//     "EpochDateTime": 1658934000,
-//     "WeatherIcon": 1,
-//     "IconPhrase": "Sunny",
-//     "HasPrecipitation": false,
-//     "IsDaylight": true,
-//     "Temperature": {
-//       "Value": 34,
-//       "Unit": "C",
-//       "UnitType": 17
-//     },
-//     "PrecipitationProbability": 0,
-//     "MobileLink": "http://www.accuweather.com/en/es/madrid/308526/hourly-weather-forecast/308526?day=1&hbhhour=17&unit=c&lang=en-us",
-//     "Link": "http://www.accuweather.com/en/es/madrid/308526/hourly-weather-forecast/308526?day=1&hbhhour=17&unit=c&lang=en-us"
-//   },
-//   {
-//     "DateTime": "2022-07-27T18:00:00+02:00",
-//     "EpochDateTime": 1658937600,
-//     "WeatherIcon": 1,
-//     "IconPhrase": "Sunny",
-//     "HasPrecipitation": false,
-//     "IsDaylight": true,
-//     "Temperature": {
-//       "Value": 35,
-//       "Unit": "C",
-//       "UnitType": 17
-//     },
-//     "PrecipitationProbability": 0,
-//     "MobileLink": "http://www.accuweather.com/en/es/madrid/308526/hourly-weather-forecast/308526?day=1&hbhhour=18&unit=c&lang=en-us",
-//     "Link": "http://www.accuweather.com/en/es/madrid/308526/hourly-weather-forecast/308526?day=1&hbhhour=18&unit=c&lang=en-us"
-//   },
-//   {
-//     "DateTime": "2022-07-27T19:00:00+02:00",
-//     "EpochDateTime": 1658941200,
-//     "WeatherIcon": 1,
-//     "IconPhrase": "Sunny",
-//     "HasPrecipitation": false,
-//     "IsDaylight": true,
-//     "Temperature": {
-//       "Value": 34.8,
-//       "Unit": "C",
-//       "UnitType": 17
-//     },
-//     "PrecipitationProbability": 0,
-//     "MobileLink": "http://www.accuweather.com/en/es/madrid/308526/hourly-weather-forecast/308526?day=1&hbhhour=19&unit=c&lang=en-us",
-//     "Link": "http://www.accuweather.com/en/es/madrid/308526/hourly-weather-forecast/308526?day=1&hbhhour=19&unit=c&lang=en-us"
-//   },
-//   {
-//     "DateTime": "2022-07-27T20:00:00+02:00",
-//     "EpochDateTime": 1658944800,
-//     "WeatherIcon": 1,
-//     "IconPhrase": "Sunny",
-//     "HasPrecipitation": false,
-//     "IsDaylight": true,
-//     "Temperature": {
-//       "Value": 34.3,
-//       "Unit": "C",
-//       "UnitType": 17
-//     },
-//     "PrecipitationProbability": 0,
-//     "MobileLink": "http://www.accuweather.com/en/es/madrid/308526/hourly-weather-forecast/308526?day=1&hbhhour=20&unit=c&lang=en-us",
-//     "Link": "http://www.accuweather.com/en/es/madrid/308526/hourly-weather-forecast/308526?day=1&hbhhour=20&unit=c&lang=en-us"
-//   },
-//   {
-//     "DateTime": "2022-07-27T21:00:00+02:00",
-//     "EpochDateTime": 1658948400,
-//     "WeatherIcon": 1,
-//     "IconPhrase": "Sunny",
-//     "HasPrecipitation": false,
-//     "IsDaylight": true,
-//     "Temperature": {
-//       "Value": 33.8,
-//       "Unit": "C",
-//       "UnitType": 17
-//     },
-//     "PrecipitationProbability": 0,
-//     "MobileLink": "http://www.accuweather.com/en/es/madrid/308526/hourly-weather-forecast/308526?day=1&hbhhour=21&unit=c&lang=en-us",
-//     "Link": "http://www.accuweather.com/en/es/madrid/308526/hourly-weather-forecast/308526?day=1&hbhhour=21&unit=c&lang=en-us"
-//   },
-//   {
-//     "DateTime": "2022-07-27T22:00:00+02:00",
-//     "EpochDateTime": 1658952000,
-//     "WeatherIcon": 33,
-//     "IconPhrase": "Clear",
-//     "HasPrecipitation": false,
-//     "IsDaylight": false,
-//     "Temperature": {
-//       "Value": 32.5,
-//       "Unit": "C",
-//       "UnitType": 17
-//     },
-//     "PrecipitationProbability": 0,
-//     "MobileLink": "http://www.accuweather.com/en/es/madrid/308526/hourly-weather-forecast/308526?day=1&hbhhour=22&unit=c&lang=en-us",
-//     "Link": "http://www.accuweather.com/en/es/madrid/308526/hourly-weather-forecast/308526?day=1&hbhhour=22&unit=c&lang=en-us"
-//   }
-// ]

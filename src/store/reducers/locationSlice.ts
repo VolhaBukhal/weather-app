@@ -2,12 +2,15 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import { ILocationData, ILocationState } from '@interfaces/index'
 
+import { APIs } from '@constants/api'
+
 const initialState: ILocationState = {
   city: '',
   country: '',
   lon: '',
   lat: '',
-  weatherIcon: 2,
+  curAPI: APIs.OPENWEATHER,
+  curIcon: '02d',
   defaultLocation: {
     city: '',
     country: '',
@@ -42,9 +45,22 @@ const locationSlice = createSlice({
       state.lat = state.defaultLocation.lat
       state.lon = state.defaultLocation.lon
     },
+    setCurrentApi: (state, action: PayloadAction<APIs>) => {
+      state.curAPI = action.payload
+    },
+    setCurrentIcon: (state, action: PayloadAction<string | number>) => {
+      state.curIcon = action.payload
+    },
   },
 })
 
-export const { setLocationFromIP, setCity, setCountry, setDefaultLocation } = locationSlice.actions
+export const {
+  setLocationFromIP,
+  setCity,
+  setCountry,
+  setDefaultLocation,
+  setCurrentApi,
+  setCurrentIcon,
+} = locationSlice.actions
 
 export default locationSlice.reducer

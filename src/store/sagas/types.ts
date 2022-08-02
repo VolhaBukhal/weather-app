@@ -5,7 +5,11 @@ import {
   IAccuWeatherFiveDays,
   IAccuWeatherOneHour,
   IWeatherData,
-  IWeatherCity,
+  IOpenWeatherCurrent,
+  IOpenWeatherFiveDays,
+  IOpenWeatherCoordinates,
+  IOpenWeatherAll,
+  // IOpenWeatherOneHour,
 } from '@interfaces/index'
 
 export type AccuWeatherWorkerType = Generator<
@@ -17,5 +21,21 @@ export type AccuWeatherWorkerType = Generator<
   | IAccuWeatherCurrent
   | IAccuWeatherFiveDays
   | IAccuWeatherOneHour[]
-  | IWeatherCity
 >
+
+export type OpenWeatherWorkerType = Generator<
+  SelectEffect | CallEffect | PutEffect | ForkEffect | AllEffect<ForkEffect>,
+  void,
+  | string
+  | IOpenWeatherCoordinates
+  | IWeatherData
+  | IOpenWeatherCurrent
+  | IOpenWeatherFiveDays
+  | IOpenWeatherAll
+>
+
+// export type OpenWeatherWorkerType = Generator<
+//   CallEffect | SelectEffect,
+//   void,
+//   ReturnGeWeatherFromAccuWeatherWorkerType | ReturnGeWeatherFromOpenWeatherWorkerType | string
+// >

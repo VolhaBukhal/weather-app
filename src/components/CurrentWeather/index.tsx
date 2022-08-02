@@ -1,26 +1,33 @@
 import { useAppSelector } from '@hooks/redux.hooks'
 
 // import { Loader } from '@components/Loader'
+// import { IWeatherDataKeys } from '@interfaces/index'
+import { APIs } from '@constants/api'
 
 import { TemperatureValue } from '@components/styled'
 import { WeatherDescription } from './styled'
 
 export const CurrentWeather = () => {
-  // const { isLoadingWeather, errorWeather } = useAppSelector((state) => state.loading)
-  const weather = useAppSelector((state) => state.weather)
-  const { city } = useAppSelector((state) => state.location)
-  // // eslint-disable-next-line no-debugger
-  // debugger
-  const { Value: temp } = weather.accuweather[city].current.Temperature.Metric
-  const { RelativeHumidity, Wind, WeatherText: descr } = weather.accuweather[city].current
+  const { weather } = useAppSelector((state) => state)
+  const { city, curAPI } = useAppSelector((state) => state.location)
 
-  // if (errorWeather) {
-  //   return <p>Something wrong with weather request</p>
-  // }
+  const temp =
+    curAPI === APIs.ACCUWEATHER
+      ? weather.accuweather[city].current.Temperature.Metric.Value
+      : weather.openweather[city].current.temp
+  const humidity =
+    curAPI === APIs.ACCUWEATHER
+      ? weather.accuweather[city].current.RelativeHumidity
+      : weather.openweather[city].current.humidity
+  const wind =
+    curAPI === APIs.ACCUWEATHER
+      ? weather.accuweather[city].current.Wind.Speed.Metric.Value
+      : weather.openweather[city].current.wind_speed
 
-  // if (isLoadingWeather) {
-  //   return <Loader />
-  // }
+  const descr =
+    curAPI === APIs.ACCUWEATHER
+      ? weather.accuweather[city].current.WeatherText
+      : weather.openweather[city].current.weather[0]?.description
 
   if (!city) {
     return null
@@ -30,28 +37,10 @@ export const CurrentWeather = () => {
     <>
       <TemperatureValue>
         {Math.round(temp)}&deg;C
-        <WeatherDescription>{descr.toLocaleLowerCase()}</WeatherDescription>
+        <WeatherDescription>{descr}</WeatherDescription>
       </TemperatureValue>
-      <div>
-        Wind speed {Wind.Speed.Metric.Value} {Wind.Speed.Metric.Unit}
-      </div>
-      <div>Humidity {RelativeHumidity}%</div>
+      <div>Wind speed {wind} km/h</div>
+      <div>Humidity {humidity}%</div>
     </>
   )
 }
-
-// useEffect(() => {
-//   // fetch(`${OPEN_WEATHER_URL}?city=minsk&appid=${OPEN_WEATHER_KEY}&units=metric`)
-//   fetch(
-//     'https://api.openweathermap.org/data/2.5/weather?q=minsk&appid=fd4b9aa56de84323b3f5b72c56301ec4&units=metric'
-//   )
-//     .then((res) => res.json())
-//     .then((data) => {
-//       // console.log('data: ', data.weather[0].id)
-//       // console.log('data: ', data)
-//       setTodayData(data.main.temp)
-//     })
-//     .catch(() => {
-//       console.log('error')
-//     })
-// }, [])

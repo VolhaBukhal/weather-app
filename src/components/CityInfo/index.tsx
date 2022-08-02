@@ -8,11 +8,12 @@ import { RequireLoading } from '@hoc/RequireLoading'
 
 import { CurrentWeather } from '@components/CurrentWeather'
 import { Loader } from '@components/Loader'
+import { ApiControl } from '@components/ApiControl'
 
 import { CityInfoContainer, CitySearch, City, Country } from './styled'
 
 export const CityInfo = () => {
-  const { city, country } = useAppSelector((state) => state.location)
+  const { city, country, curAPI } = useAppSelector((state) => state.location)
   const { isLoadingCity, errorCity } = useAppSelector((state) => state.loading)
   const dispatch = useAppDispatch()
   const cityRef: RefObject<HTMLInputElement> = useRef(null)
@@ -22,10 +23,10 @@ export const CityInfo = () => {
   }, [dispatch])
 
   useEffect(() => {
-    if (city) {
+    if (city && curAPI) {
       dispatch(setIsLoadingAccuWeather())
     }
-  }, [city, dispatch])
+  }, [city, curAPI, dispatch])
 
   const handleEnterCity = (event: KeyboardEvent) => {
     if (event.key === 'Enter') {
@@ -44,6 +45,7 @@ export const CityInfo = () => {
         <City> {city}</City>
         <Country> {country}</Country>
         <CitySearch ref={cityRef} placeholder={city} onKeyPress={handleEnterCity} type="search" />
+        <ApiControl />
         <RequireLoading>
           <CurrentWeather />
         </RequireLoading>
