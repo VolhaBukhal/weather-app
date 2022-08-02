@@ -5,16 +5,19 @@ export enum APIs {
   ACCUWEATHER = 'accuweather',
 }
 
+export const GOOGLE_API_KEY = 'AIzaSyDt87zs6RKKQfBZS6OwE-9B4ucGtIumT5Y'
+export const GOOGLE_ACCESS_TOKEN =
+  '4/0AdQt8qh-_GTZ6i2HW2Sh6lXQL01oGEoNkm5rY0jzjmN7vlXj-Uey1BOIUOoFPJ9fsAOTDg'
+
+// HTTP/1.1 302 Found
+// Location: https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=https%3A%2F%2Fdevelopers.google.com%2Foauthplayground&prompt=consent&response_type=code&client_id=407408718192.apps.googleusercontent.com&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar.events&access_type=offline'
 export const IP_LOCATION_URL = 'https://ipgeolocation.abstractapi.com/v1/'
 export const IP_LOCATION_KEY = 'a6512e70f15f4f28a4d6054a90274d80'
 
 // openweather
-export const OPENWEATHER_URL = 'https://api.openweathermap.org/data/2.5/weather'
 export const OPENWEATHER_KEY = 'fd4b9aa56de84323b3f5b72c56301ec4'
-
-export const OPENWEATHER_URL_CITY_COORDINATES = 'http://api.openweathermap.org/geo/1.0/direct'
-
-export const OPENWEATHER_URL_ONE_CALL = 'http://api.openweathermap.org/data/2.5/onecall'
+export const OPENWEATHER_URL_CITY_COORDINATES = 'https://api.openweathermap.org/geo/1.0/direct'
+export const OPENWEATHER_URL_ONE_CALL = 'https://api.openweathermap.org/data/2.5/onecall'
 
 // accuweather
 // headers for compressed data
@@ -23,14 +26,14 @@ export const headers = {
   // 'Access-Control-Allow-Origin': 'no-cors',
 }
 export const ACCUWEATHER_URL_CITY_SEARCH =
-  'http://dataservice.accuweather.com/locations/v1/cities/search'
+  'https://dataservice.accuweather.com/locations/v1/cities/search'
 export const ACCUWEATHER_URL_CURRENT_CONDITION =
-  'http://dataservice.accuweather.com/currentconditions/v1/'
+  'https://dataservice.accuweather.com/currentconditions/v1/'
 
 export const ACCUWEATHER_URL_FIVE_DAY =
-  'http://dataservice.accuweather.com/forecasts/v1/daily/5day/'
+  'https://dataservice.accuweather.com/forecasts/v1/daily/5day/'
 
 export const ACCUWEATHER_URL_HOURLY =
-  'http://dataservice.accuweather.com/forecasts/v1/hourly/12hour/'
+  'https://dataservice.accuweather.com/forecasts/v1/hourly/12hour/'
 
 export const ACCUWEATHER_KEY = 'wy5LWu7ZTe8NNkisxMtcLQ6F9A7GNzLi'

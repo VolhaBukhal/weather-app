@@ -11,7 +11,8 @@ export const Icon = styled.div<{ iconNumber: number | string }>`
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: ${({ iconNumber }) => `url(/images/icons/accuweather/${iconNumber}.png)`};
+  background-image: ${({ iconNumber }) =>
+    `url(${process.env.PUBLIC_URL}/images/icons/accuweather/${iconNumber}.png)`};
 `
 
 export const IconSmall = styled(Icon)`

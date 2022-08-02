@@ -44,7 +44,7 @@ export const Container = styled.div<{
   background-position: center;
   transition: 0.8s;
   background-image: ${({ iconNumber, currentApi }) =>
-    `url(/images/bgs/${
+    `url(${process.env.PUBLIC_URL}/images/bgs/${
       currentApi === APIs.ACCUWEATHER
         ? BACKGROUNDS_ACCUWEATHER[iconNumber as number] || 2
         : BACKGROUNDS_OPENWEATHER[iconNumber as keyof typeof BACKGROUNDS_OPENWEATHER]

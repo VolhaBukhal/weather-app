@@ -33,8 +33,8 @@ export const HeadlineLogo = styled.div<{ currentApi: string }>`
   background-repeat: no-repeat;
   background-image: ${({ currentApi }) =>
     currentApi === APIs.OPENWEATHER
-      ? `url(/images/icons/logos/openweather.png)`
-      : `url(/images/icons/logos/accuweather.png)`};
+      ? `url(${process.env.PUBLIC_URL}/images/icons/logos/openweather.png)`
+      : `url(${process.env.PUBLIC_URL}/images/icons/logos/accuweather.png)`};
 `
 export const Container = styled.div`
   display: flex;
