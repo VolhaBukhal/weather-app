@@ -159,6 +159,6 @@ function* getWeatherWorker(): Generator<
   }
 }
 
-export function* AccuWeatherWatcher() {
+export function* accuWeatherWatcher() {
   yield takeEvery(setIsLoadingAccuWeather.type, getWeatherWorker)
 }

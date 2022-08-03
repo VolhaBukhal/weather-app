@@ -1,7 +1,4 @@
-// import { useState, useEffect } from 'react'
 import { useAppSelector } from '@hooks/redux.hooks'
-
-// import { APIs } from '@constants/api'
 
 import { Display } from '@components/Display'
 import { Container } from './styled'

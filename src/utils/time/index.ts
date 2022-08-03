@@ -63,10 +63,8 @@ export function getLocalHourForHourlyForecastOpenWeather(time: number, timeOffse
   const localOffSet = curHour.getTimezoneOffset() / 60
 
   const dif = offSetInHours + localOffSet
-  const localHours = hours + dif
-  return localHours > 12
-    ? makeDoubleSignsNumberFromSingle(localHours % 12)
-    : makeDoubleSignsNumberFromSingle(localHours)
+  const localHours = hours + dif < 0 ? 24 + hours + dif : (hours + dif) % 24
+  return makeDoubleSignsNumberFromSingle(localHours)
 }
 
 export function getLocalTimeAccuWeather(time: string) {
@@ -82,12 +80,7 @@ export function getLocalTimeOpenWeather(offSet: number) {
   const minutes = now.getMinutes()
   const localOffSetFromUTC = now.getTimezoneOffset() / 60 // in hours
   const incomeOffSet = offSet / 3600 // from api comes in ms
-
   const dif = incomeOffSet + localOffSetFromUTC
-  const curHours =
-    hours + dif > 24
-      ? makeDoubleSignsNumberFromSingle((hours + dif) % 24)
-      : makeDoubleSignsNumberFromSingle(hours + dif)
-
-  return `${curHours}:${makeDoubleSignsNumberFromSingle(minutes)}`
+  const curHours = hours + dif < 0 ? 24 + hours + dif : (hours + dif) % 24
+  return `${makeDoubleSignsNumberFromSingle(curHours)}:${makeDoubleSignsNumberFromSingle(minutes)}`
 }

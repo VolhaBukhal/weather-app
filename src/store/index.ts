@@ -5,6 +5,7 @@ import { rootSaga } from '@store/sagas/index'
 import location from './reducers/locationSlice'
 import loading from './reducers/loadingSlice'
 import weather from './reducers/weatherSlice'
+import events from './reducers/eventsSlice'
 
 const sagaMiddleware = createSagaMiddleware()
 
@@ -13,6 +14,7 @@ export const store = configureStore({
     location,
     loading,
     weather,
+    events,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sagaMiddleware),
 })

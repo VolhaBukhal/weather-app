@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { SCROLL } from '@components/styled'
 
 const HEIGHT = '80'
 const WIDTH = '20'
@@ -18,17 +19,7 @@ export const RestrictedContainer = styled.div`
   height: ${HEIGHT}%;
 
   overflow: auto;
-
-  &::-webkit-scrollbar {
-    width: ${({ theme }) => theme.fontSizes[0] / 2}px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background-color: ${({ theme }) => theme.colors.grey};
-    border-radius: ${({ theme }) => theme.borderRadius}px;
-    &:hover {
-      background-color: ${({ theme }) => theme.colors.dark};
-    }
-  }
+  ${SCROLL}
 `
 export const Item = styled.div`
   display: flex;

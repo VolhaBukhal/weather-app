@@ -276,3 +276,48 @@ export interface IAccuWeatherOneHour {
     Unit: string
   }
 }
+
+// calender
+export interface IEventState {
+  items: IEventItem[]
+  isSynchronize: boolean
+}
+
+export interface IEventsListResponse {
+  result: {
+    items: IEventItem[]
+  }
+}
+
+export interface IEventItem {
+  created: string
+  creator: {
+    email: 'o.bukhal@gmail.com'
+    self: true
+  }
+  end: {
+    dateTime: '2022-08-03T17:44:22+03:00'
+    timeZone: 'Europe/Paris'
+  }
+  etag: '"3319018134166000"'
+  eventType: 'default'
+  htmlLink: 'https://www.google.com/calendar/event?eid=YW02aDFhc3U1NTJiNDhwMWlucHBjcTc5czAgby5idWtoYWxAbQ'
+  iCalUID: 'am6h1asu552b48p1inppcq79s0@google.com'
+  id: 'am6h1asu552b48p1inppcq79s0'
+  kind: 'calendar#event'
+  organizer: {
+    email: 'o.bukhal@gmail.com'
+    self: true
+  }
+  reminders: {
+    useDefault: true
+  }
+  sequence: 0
+  start: {
+    dateTime: '2022-08-03T09:44:22+03:00'
+    timeZone: 'Europe/Paris'
+  }
+  status: 'confirmed'
+  summary: 'Poc Dev From Now'
+  updated: '2022-08-03T06:44:27.083Z'
+}

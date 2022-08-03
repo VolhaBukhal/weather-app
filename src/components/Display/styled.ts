@@ -19,7 +19,8 @@ export const DisplayItem = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: start;
-  padding: ${({ theme }) => theme.spaces[3]}px;
+  padding: ${({ theme }) => theme.spaces[3]}px ${({ theme }) => theme.spaces[3]}px 0
+    ${({ theme }) => theme.spaces[3]}px;
 `
 
 export const DisplayItemShadowed = styled(DisplayItem)`

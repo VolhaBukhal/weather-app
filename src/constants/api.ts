@@ -5,9 +5,9 @@ export enum APIs {
   ACCUWEATHER = 'accuweather',
 }
 
-export const GOOGLE_API_KEY = 'AIzaSyDt87zs6RKKQfBZS6OwE-9B4ucGtIumT5Y'
-export const GOOGLE_ACCESS_TOKEN =
-  '4/0AdQt8qh-_GTZ6i2HW2Sh6lXQL01oGEoNkm5rY0jzjmN7vlXj-Uey1BOIUOoFPJ9fsAOTDg'
+export const GOOGLE_API_KEY = 'AIzaSyAyAXmOLakwXi6U5L09XBm0yLINvvY7yic'
+export const GOOGLE_CLIENT_ID =
+  '800800416255-9vr6m774d2a3253s31q996ta0okvc7df.apps.googleusercontent.com'
 
 // HTTP/1.1 302 Found
 // Location: https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=https%3A%2F%2Fdevelopers.google.com%2Foauthplayground&prompt=consent&response_type=code&client_id=407408718192.apps.googleusercontent.com&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar.events&access_type=offline'

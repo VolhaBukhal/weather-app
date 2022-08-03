@@ -4,6 +4,7 @@ import { CityInfo } from '@components/CityInfo'
 import { WeekForecast } from '@components/WeekForecast'
 import { HourlyForecast } from '@components/HourlyForecast'
 import { Clock } from '@components/Clock'
+import { AuthCalendar } from '@components/AuthCalendar'
 
 import { DisplayContainer, DisplayItem, DisplayItemColumn, DisplayItemShadowed } from './styled'
 
@@ -12,7 +13,7 @@ export const Display = () => (
     <DisplayItem>
       <DisplayItemColumn>
         <Clock />
-        <div>Calender</div>
+        <AuthCalendar />
       </DisplayItemColumn>
       <CityInfo />
     </DisplayItem>

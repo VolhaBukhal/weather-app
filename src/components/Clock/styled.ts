@@ -27,7 +27,6 @@ export const DayPart = styled.span`
 `
 
 export const DayInfo = styled.div`
-  margin-top: ${({ theme }) => theme.spaces[3]}px;
   font-size: ${({ theme }) => theme.fontSizes[5]}px;
   ${TEXT_SHADOW};
 `
