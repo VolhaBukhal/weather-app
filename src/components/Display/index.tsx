@@ -6,17 +6,17 @@ import { HourlyForecast } from '@components/HourlyForecast'
 import { Clock } from '@components/Clock'
 import { AuthCalendar } from '@components/AuthCalendar'
 
-import { DisplayContainer, DisplayItem, DisplayItemColumn, DisplayItemShadowed } from './styled'
+import { DisplayContainer, DisplayTopItem, DisplayItemColumn, DisplayItemShadowed } from './styled'
 
 export const Display = () => (
   <DisplayContainer>
-    <DisplayItem>
+    <DisplayTopItem>
       <DisplayItemColumn>
         <Clock />
         <AuthCalendar />
       </DisplayItemColumn>
       <CityInfo />
-    </DisplayItem>
+    </DisplayTopItem>
 
     <DisplayItemShadowed>
       <RequireLoading>

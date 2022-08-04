@@ -24,6 +24,7 @@ const sagaMiddleware = createSagaMiddleware()
 const persistConfig = {
   key: 'root',
   storage,
+  blacklist: ['events'],
 }
 
 const rootReducer = combineReducers({

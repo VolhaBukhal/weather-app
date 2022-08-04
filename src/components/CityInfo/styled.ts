@@ -1,7 +1,9 @@
 import styled, { css } from 'styled-components'
 
+const WIDTH = '100'
 const WIDTH_CONTAINER = '30'
 const WEIGHT = '300'
+const MIN_HEIGHT = '285'
 const OPACITY = '0.7'
 const BORDER_BOTTOM = '1px solid white'
 
@@ -13,7 +15,14 @@ const InputText = css`
 `
 
 export const CityInfoContainer = styled.div`
+  min-height: ${MIN_HEIGHT}px;
   width: ${WIDTH_CONTAINER}%;
+  @media (max-width: ${({ theme }) => theme.size.small}px) {
+    width: ${WIDTH}%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `
 
 export const CitySearch = styled.input.attrs(({ ref }) => ({
@@ -27,6 +36,12 @@ export const CitySearch = styled.input.attrs(({ ref }) => ({
   ${InputText}
   &::placeholder {
     ${InputText}
+  }
+  @media (max-width: ${({ theme }) => theme.size.med}px) {
+    width: ${WIDTH}%;
+  }
+  @media (max-width: ${({ theme }) => theme.size.small}px) {
+    text-align: center;
   }
 `
 

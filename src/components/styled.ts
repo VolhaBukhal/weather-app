@@ -9,6 +9,7 @@ const TIME = '0.5'
 export const SCROLL = css`
   &::-webkit-scrollbar {
     width: ${({ theme }) => theme.fontSizes[0] / 2}px;
+    height: ${({ theme }) => theme.fontSizes[0] / 2}px;
   }
   &::-webkit-scrollbar-thumb {
     background-color: ${({ theme }) => theme.colors.grey};

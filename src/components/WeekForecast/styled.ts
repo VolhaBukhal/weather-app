@@ -3,7 +3,8 @@ import styled from 'styled-components'
 import { APIs } from '@constants/api'
 
 const WIDTH = '80'
-const HEIGHT = '100'
+const WIDTH_SMALL_WINDOW = '90'
+const HEIGHT = '98'
 const WIDTH_LOGO = '150'
 const HEIGHT_LOGO = '40'
 
@@ -13,6 +14,9 @@ export const WeekForecastContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  @media (max-width: ${({ theme }) => theme.size.small}px) {
+    width: ${WIDTH_SMALL_WINDOW}%;
+  }
 `
 export const HeadlineItem = styled.div`
   display: flex;
@@ -41,4 +45,7 @@ export const Container = styled.div`
   justify-content: space-between;
   align-items: flex-start;
   padding-bottom: ${({ theme }) => theme.spaces[3]}px;
+  @media (max-width: ${({ theme }) => theme.size.small}px) {
+    flex-direction: column;
+  }
 `

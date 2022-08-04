@@ -31,7 +31,7 @@ export const ForecastItem = (day: unknown) => {
       ) : (
         <IconOpenWeather iconNumber={icon} />
       )}
-      <TemperatureValueBig> {Math.round(temp)} &deg;</TemperatureValueBig>
+      <TemperatureValueBig> {Math.round(temp)}°</TemperatureValueBig>
     </Item>
   )
 }

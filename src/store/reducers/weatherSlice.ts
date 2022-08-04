@@ -21,9 +21,13 @@ const weatherSlice = createSlice({
       const { weather } = action.payload
       state.openweather[city] = weather
     },
+    resetWeather: (state) => {
+      state.accuweather = {}
+      state.openweather = {}
+    },
   },
 })
 
-export const { setAccuWeather, setOpenWeather } = weatherSlice.actions
+export const { setAccuWeather, setOpenWeather, resetWeather } = weatherSlice.actions
 
 export default weatherSlice.reducer

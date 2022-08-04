@@ -5,6 +5,9 @@ export const Wrapper = styled.div`
   height: auto;
   width: 100%;
   box-sizing: border-box;
+  @media (max-width: ${({ theme }) => theme.size.small}px) {
+    justify-content: space-evenly;
+  }
 `
 
 export const Item = styled.div`

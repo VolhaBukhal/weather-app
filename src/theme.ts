@@ -1,5 +1,12 @@
 const font = 'Segoe UI'
 
+const size = {
+  xs: 550,
+  small: 768,
+  med: 992,
+  large: 1200,
+}
+
 export const theme = {
   font,
   boxShadows: '5px 5px 2px rgba(0, 0, 0, 0.2)',
@@ -14,4 +21,5 @@ export const theme = {
   spaces: [0, 4, 8, 16, 32, 64, 128],
   fontSizes: [12, 14, 16, 20, 24, 32, 40, 48, 56],
   borderRadius: 10,
+  size,
 }
