@@ -209,6 +209,7 @@ export interface IAccuWeatherData {
 
 export interface IAccuWeatherCurrent {
   LocalObservationDateTime: string
+  EpochTime: number
   WeatherText: string
   IsDayTime: boolean
   WeatherIcon: number

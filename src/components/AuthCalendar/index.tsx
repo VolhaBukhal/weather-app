@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from '@hooks/redux.hooks'
 import { ButtonLabels } from '@constants/index'
 import { isSynchronize } from '@store/reducers/eventsSlice'
 
-import { EventItem } from '@components/EventItem'
+import { EventItem } from '@components/EventList'
 
 import { Button } from '@components/styled'
 import { Container } from './styled'

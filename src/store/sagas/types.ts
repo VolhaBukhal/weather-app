@@ -9,7 +9,6 @@ import {
   IOpenWeatherFiveDays,
   IOpenWeatherCoordinates,
   IOpenWeatherAll,
-  // IOpenWeatherOneHour,
 } from '@interfaces/index'
 
 export type AccuWeatherWorkerType = Generator<
@@ -33,9 +32,3 @@ export type OpenWeatherWorkerType = Generator<
   | IOpenWeatherFiveDays
   | IOpenWeatherAll
 >
-
-// export type OpenWeatherWorkerType = Generator<
-//   CallEffect | SelectEffect,
-//   void,
-//   ReturnGeWeatherFromAccuWeatherWorkerType | ReturnGeWeatherFromOpenWeatherWorkerType | string
-// >

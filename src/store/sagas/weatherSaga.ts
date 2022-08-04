@@ -138,18 +138,29 @@ function* getWeatherWorker(): Generator<
   const weather = yield select((state: RootState) => state.weather)
 
   const cityIsExist = (weather as IWeatherData)[curAPI as IWeatherDataKeys][city as string]
+  const accuWeatherCity = cityIsExist as IAccuWeatherCity
+  const openWeatherCity = cityIsExist as IOpenWeatherAll
 
   if (cityIsExist) {
-    const countryOfExistedCity = cityIsExist.country
-    const iconOfExistedCity =
-      curAPI === APIs.ACCUWEATHER
-        ? (cityIsExist as IAccuWeatherCity).current.WeatherIcon
-        : (cityIsExist as IOpenWeatherAll).current.weather[0].icon
+    const hourNow = new Date().getHours()
 
-    yield put(setLoadingIsFinishedWeather())
-    yield put(setCountry(countryOfExistedCity))
-    yield put(setCurrentIcon(iconOfExistedCity))
-    return
+    const hourOfExistedHour =
+      curAPI === APIs.ACCUWEATHER
+        ? new Date(accuWeatherCity.current.EpochTime * 1000).getHours()
+        : new Date(openWeatherCity.current.dt * 1000).getHours()
+    const theSameHour = hourNow === hourOfExistedHour
+    if (theSameHour) {
+      const countryOfExistedCity = cityIsExist.country
+      const iconOfExistedCity =
+        curAPI === APIs.ACCUWEATHER
+          ? accuWeatherCity.current.WeatherIcon
+          : openWeatherCity.current.weather[0].icon
+
+      yield put(setLoadingIsFinishedWeather())
+      yield put(setCountry(countryOfExistedCity))
+      yield put(setCurrentIcon(iconOfExistedCity))
+      return
+    }
   }
 
   if (curAPI === APIs.ACCUWEATHER) {

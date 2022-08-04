@@ -40,4 +40,5 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  padding-bottom: ${({ theme }) => theme.spaces[3]}px;
 `

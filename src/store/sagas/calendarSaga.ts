@@ -6,8 +6,12 @@ import { apiCalendar } from '@utils/api/googlecalendar'
 import { IEventsListResponse } from '@interfaces/index'
 
 function* getEventsFromCalendarWorker() {
-  const response: IEventsListResponse = yield call(apiCalendar.listUpcomingEvents, 10)
-  yield put(setEvents(response))
+  try {
+    const response: IEventsListResponse = yield call(apiCalendar.listUpcomingEvents, 10)
+    yield put(setEvents(response))
+  } catch (err) {
+    console.log(err)
+  }
 }
 
 export function* loadUpcomingEventsWatcher() {

@@ -41,12 +41,12 @@ export const IconSmall = styled(Icon)`
 
 export const IconOpenWeather = styled(Icon)`
   background-image: ${({ iconNumber }) =>
-    `url(http://openweathermap.org/img/wn/${iconNumber}@2x.png)`};
+    `url(https://openweathermap.org/img/wn/${iconNumber}@2x.png)`};
 `
 
 export const IconSmallOpenWeather = styled(IconSmall)`
   background-image: ${({ iconNumber }) =>
-    `url(http://openweathermap.org/img/wn/${iconNumber}@2x.png)`};
+    `url(https://openweathermap.org/img/wn/${iconNumber}@2x.png)`};
 `
 
 export const TemperatureValue = styled.div`
