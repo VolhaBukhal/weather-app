@@ -24,7 +24,6 @@ export const CityInfoContainer = styled.div`
     align-items: center;
   }
 `
-
 export const CitySearch = styled.input.attrs(({ ref }) => ({
   ref,
 }))`
@@ -44,12 +43,10 @@ export const CitySearch = styled.input.attrs(({ ref }) => ({
     text-align: center;
   }
 `
-
 export const City = styled.div`
   font-size: ${({ theme }) => theme.fontSizes[7]}px;
   text-transform: capitalize;
 `
-
 export const Country = styled.div`
   font-size: ${({ theme }) => theme.fontSizes[3]}px;
   text-transform: capitalize;

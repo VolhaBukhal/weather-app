@@ -3,16 +3,12 @@ import { APIs } from '@constants/api'
 import { BACKGROUNDS_ACCUWEATHER, BACKGROUNDS_OPENWEATHER } from '@constants/index'
 
 const WIDTH = '100'
-const HEIGHT = '100'
 
 export const Container = styled.div<{
   iconNumber: unknown
   currentApi: string
 }>`
-  /* width: ${WIDTH}vw; */
   width: ${WIDTH}%;
-  /* height: ${HEIGHT}vh; */
-  /* height: ${HEIGHT}%; */
   height: auto;
   display: flex;
   justify-content: center;
@@ -31,9 +27,4 @@ export const Container = styled.div<{
   @media (min-width: ${({ theme }) => theme.size.small}px) {
     height: 100%;
   }
-
-  /* @media (max-width: ${({ theme }) => theme.size.small}px) {
-    height: auto;
-    padding: 0;
-  } */
 `

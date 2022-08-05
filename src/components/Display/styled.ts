@@ -5,6 +5,8 @@ const HEIGHT_CONTAINER_LARGE = '90'
 const WIDTH_CONTAINER_MEDIUM = '95'
 const WIDTH_CONTAINER_SMALL = '100'
 const HEIGHT_SHADOWED = '45'
+const BGC_LIGHT_MASK = 'rgba(0, 0, 0, 0.2)'
+const BGC_DARK_MASK = 'rgba(16, 17, 19, 0.6)'
 
 export const DisplayContainer = styled.div`
   width: ${WIDTH_CONTAINER_LARGE}vw;
@@ -14,7 +16,7 @@ export const DisplayContainer = styled.div`
   justify-content: space-between;
   gap: ${({ theme }) => theme.spaces[3]}px;
   color: ${({ theme }) => theme.colors.white};
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: ${BGC_LIGHT_MASK};
   box-shadow: ${({ theme }) => theme.boxShadows};
   @media (max-width: ${({ theme }) => theme.size.med}px) {
     width: ${WIDTH_CONTAINER_MEDIUM}%;
@@ -40,7 +42,7 @@ export const DisplayTopItem = styled.div`
 
 export const DisplayItemShadowed = styled(DisplayTopItem)`
   height: ${HEIGHT_SHADOWED}%;
-  background-color: rgba(16, 17, 19, 0.6);
+  background-color: ${BGC_DARK_MASK};
   gap: ${({ theme }) => theme.spaces[4]}px;
   @media (max-width: ${({ theme }) => theme.size.small}px) {
     height: auto;

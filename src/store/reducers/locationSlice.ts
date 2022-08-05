@@ -12,10 +12,10 @@ const initialState: ILocationState = {
   curAPI: APIs.OPENWEATHER,
   curIcon: '02d',
   defaultLocation: {
-    city: '',
-    country: '',
-    lon: '',
-    lat: '',
+    city: 'Minsk',
+    country: 'Belarus',
+    lon: '28.5096',
+    lat: '54.2322',
   },
 }
 

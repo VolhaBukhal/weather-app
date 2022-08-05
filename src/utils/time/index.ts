@@ -69,8 +69,6 @@ export function getLocalHourForHourlyForecastOpenWeather(time: number, timeOffse
 
 export function getLocalTimeAccuWeather(time: string) {
   const date = new Date(time)
-  // eslint-disable-next-line no-debugger
-  debugger
   return getDigitClockFromString(date)
 }
 

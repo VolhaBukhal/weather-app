@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import { SCROLL } from '@components/styled'
 
-// const HEIGHT = '97'
 const HEIGHT_MEDIUM = '243'
 const WIDTH = '20'
 const WIDTH_FULL = '100'
@@ -26,9 +25,6 @@ export const RestrictedContainer = styled.div`
 
   overflow: auto;
   ${SCROLL}
-  /* @media (max-width: ${({ theme }) => theme.size.med}px) {
-    height: ${HEIGHT_MEDIUM}px;
-  } */
   @media (max-width: ${({ theme }) => theme.size.small}px) {
     height: auto;
     width: ${WIDTH_FULL}%;
@@ -44,7 +40,6 @@ export const Item = styled.div`
     flex-direction: column;
   }
 `
-
 export const Heading = styled.div`
   font-weight: ${WEIGHT};
   text-align: center;
