@@ -5,6 +5,7 @@ import { WeekForecast } from '@components/WeekForecast'
 import { HourlyForecast } from '@components/HourlyForecast'
 import { Clock } from '@components/Clock'
 import { AuthCalendar } from '@components/AuthCalendar'
+import { ErrorBoundary } from '@components/ErrorBoundary'
 
 import { DisplayContainer, DisplayTopItem, DisplayItemColumn, DisplayItemShadowed } from './styled'
 
@@ -15,15 +16,21 @@ export const Display = () => (
         <Clock />
         <AuthCalendar />
       </DisplayItemColumn>
-      <CityInfo />
+      <ErrorBoundary>
+        <CityInfo />
+      </ErrorBoundary>
     </DisplayTopItem>
 
     <DisplayItemShadowed>
       <RequireLoading>
-        <HourlyForecast />
+        <ErrorBoundary>
+          <HourlyForecast />
+        </ErrorBoundary>
       </RequireLoading>
       <RequireLoading>
-        <WeekForecast />
+        <ErrorBoundary>
+          <WeekForecast />
+        </ErrorBoundary>
       </RequireLoading>
     </DisplayItemShadowed>
   </DisplayContainer>

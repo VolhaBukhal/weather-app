@@ -34,7 +34,6 @@ export const WeekForecast = () => {
           )}
         </HeadlineInfo>
       </HeadlineItem>
-
       <Container>
         {DailyForecasts &&
           DailyForecasts.slice(0, 5).map((item: IAccuWeatherOneDay | IOpenWeatherOneDayItem) => (
