@@ -1,21 +1,9 @@
 import { IEventItem } from '@interfaces/index'
+import { getInfoFromEventTime } from './helpers'
 import { Item, ItemTime, Time, Summary } from './styled'
 
 export const EventItem = ({ start, end, summary }: IEventItem) => {
-  const day = new Date(start.dateTime).toLocaleDateString('en-US', {
-    month: 'short',
-    day: 'numeric',
-  })
-  const timeStart = new Date(start.dateTime).toLocaleTimeString('en-US', {
-    hour12: false,
-    hour: 'numeric',
-    minute: '2-digit',
-  })
-  const timeEnd = new Date(end.dateTime).toLocaleTimeString('en-US', {
-    hour12: false,
-    hour: 'numeric',
-    minute: '2-digit',
-  })
+  const { day, timeStart, timeEnd } = getInfoFromEventTime(start, end)
 
   return (
     <Item>

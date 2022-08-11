@@ -296,3 +296,8 @@ export interface IEventItem {
   }
   summary: string
 }
+
+export interface IEventPeriod {
+  dateTime: string
+  timeZone: string
+}
