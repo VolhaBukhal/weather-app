@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { SCROLL } from '@components/styled'
+import { CUSTOM_SCROLL } from '@components/styled'
 
 const HEIGHT_MEDIUM = '243'
 const WIDTH = '20'
@@ -24,7 +24,7 @@ export const RestrictedContainer = styled.div`
   height: ${HEIGHT_MEDIUM}px;
 
   overflow: auto;
-  ${SCROLL}
+  ${CUSTOM_SCROLL}
   @media (max-width: ${({ theme }) => theme.size.small}px) {
     height: auto;
     width: ${WIDTH_FULL}%;

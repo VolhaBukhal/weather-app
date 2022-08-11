@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { SCROLL } from '@components/styled'
+import { CUSTOM_SCROLL } from '@components/styled'
 
 const HEIGHT = '180'
 const WIDTH = '100'
@@ -11,5 +11,5 @@ export const Container = styled.div`
   border-radius: 0 0 ${({ theme }) => theme.borderRadius / 2}px
     ${({ theme }) => theme.borderRadius / 2}px;
   overflow: auto;
-  ${SCROLL}
+  ${CUSTOM_SCROLL}
 `

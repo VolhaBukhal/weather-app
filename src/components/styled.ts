@@ -4,12 +4,13 @@ const HEIGHT = '50'
 const WIDTH = '100'
 const HEIGHT_SMALL = '40'
 const WIDTH_SMALL = '80'
+const SCROLL_SIZE = '6'
 const TIME = '0.5'
 
-export const SCROLL = css`
+export const CUSTOM_SCROLL = css`
   &::-webkit-scrollbar {
-    width: ${({ theme }) => theme.fontSizes[0] / 2}px;
-    height: ${({ theme }) => theme.fontSizes[0] / 2}px;
+    width: ${SCROLL_SIZE}px;
+    height: ${SCROLL_SIZE}px;
   }
   &::-webkit-scrollbar-thumb {
     background-color: ${({ theme }) => theme.colors.grey};
