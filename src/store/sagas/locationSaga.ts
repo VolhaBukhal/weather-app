@@ -1,9 +1,10 @@
-import { put, call, takeEvery } from 'redux-saga/effects'
-import { setLocationFromIP } from '@store/reducers/locationSlice'
+import { put, call, takeEvery, delay } from 'redux-saga/effects'
+import { setLocationFromIP, setDefaultLocation } from '@store/reducers/locationSlice'
 import {
   setIsLoadingCity,
   setLoadingIsFinishedCity,
   setErrorCity,
+  resetError,
 } from '@store/reducers/loadingSlice'
 import { fetchInitialLocation } from '@utils/api/location'
 import { ILocationData } from '@interfaces/index'
@@ -17,6 +18,9 @@ function* getInitialLocationWorker() {
     }
   } catch {
     yield put(setErrorCity())
+    yield delay(2000)
+    yield put(setDefaultLocation())
+    yield put(resetError())
   }
 }
 

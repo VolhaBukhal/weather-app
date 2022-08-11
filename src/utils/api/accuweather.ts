@@ -1,6 +1,5 @@
 import {
   ACCUWEATHER_URL_CITY_SEARCH,
-  ACCUWEATHER_KEY,
   ACCUWEATHER_URL_CURRENT_CONDITION,
   ACCUWEATHER_URL_FIVE_DAY,
   ACCUWEATHER_URL_HOURLY,
@@ -15,7 +14,7 @@ import {
 
 export const getCityAccuWeather = async (city: string): Promise<IAccuWeatherData> => {
   const baseURL = ACCUWEATHER_URL_CITY_SEARCH
-  const query = `?apikey=${ACCUWEATHER_KEY}&q=${city}`
+  const query = `?apikey=${process.env.REACT_APP_ACCUWEATHER_KEY}&q=${city}`
 
   const response = await fetch(`${baseURL}${query}`, { headers })
   const data: IAccuWeatherData[] = await response.json()
@@ -26,7 +25,7 @@ export const getAccuWeatherCurrentConditions = async (
   cityId: string
 ): Promise<IAccuWeatherCurrent | Error> => {
   const baseURL = ACCUWEATHER_URL_CURRENT_CONDITION
-  const query = `${cityId}?apikey=${ACCUWEATHER_KEY}&details=true`
+  const query = `${cityId}?apikey=${process.env.REACT_APP_ACCUWEATHER_KEY}&details=true`
 
   try {
     const response = await fetch(`${baseURL}${query}`, { headers })
@@ -45,7 +44,7 @@ export const getAccuWeatherCurrentConditions = async (
 export const getAccuWeatherFiveDays = async (cityId: string): Promise<IAccuWeatherFiveDays> => {
   const baseURL = ACCUWEATHER_URL_FIVE_DAY
 
-  const query = `${cityId}?apikey=${ACCUWEATHER_KEY}&details=false&metric=true`
+  const query = `${cityId}?apikey=${process.env.REACT_APP_ACCUWEATHER_KEY}&details=false&metric=true`
 
   const response = await fetch(`${baseURL}${query}`, { headers })
 
@@ -56,7 +55,7 @@ export const getAccuWeatherFiveDays = async (cityId: string): Promise<IAccuWeath
 export const getAccuWeatherHourly = async (cityId: string): Promise<IAccuWeatherOneHour[]> => {
   const baseURL = ACCUWEATHER_URL_HOURLY
 
-  const query = `${cityId}?apikey=${ACCUWEATHER_KEY}&metric=true`
+  const query = `${cityId}?apikey=${process.env.REACT_APP_ACCUWEATHER_KEY}&metric=true`
 
   const response = await fetch(`${baseURL}${query}`, { headers })
 

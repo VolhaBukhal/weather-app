@@ -1,15 +1,11 @@
-import {
-  OPENWEATHER_KEY,
-  OPENWEATHER_URL_ONE_CALL,
-  OPENWEATHER_URL_CITY_COORDINATES,
-} from '@constants/api'
+import { OPENWEATHER_URL_ONE_CALL, OPENWEATHER_URL_CITY_COORDINATES } from '@constants/api'
 import { IOpenWeatherCoordinates, IOpenWeatherAll } from '@interfaces/index'
 
 export const getOpenWeatherCoordinates = async (
   cityName: string
 ): Promise<IOpenWeatherCoordinates | Error> => {
   const baseURL = OPENWEATHER_URL_CITY_COORDINATES
-  const query = `?q=${cityName}&limit=1&appid=${OPENWEATHER_KEY}`
+  const query = `?q=${cityName}&limit=1&appid=${process.env.REACT_APP_OPENWEATHER_KEY}`
 
   try {
     const response = await fetch(`${baseURL}${query}`)
@@ -30,7 +26,7 @@ export const getOpenWeatherOneCall = async (
   lon: number
 ): Promise<IOpenWeatherAll | Error> => {
   const baseURL = OPENWEATHER_URL_ONE_CALL
-  const query = `?lat=${lat}&lon=${lon}&units=metric&exclude=minutely&appid=${OPENWEATHER_KEY}`
+  const query = `?lat=${lat}&lon=${lon}&units=metric&exclude=minutely&appid=${process.env.REACT_APP_OPENWEATHER_KEY}`
 
   try {
     const response = await fetch(`${baseURL}${query}`)
