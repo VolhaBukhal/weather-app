@@ -33,26 +33,23 @@ export const CityInfo = () => {
     }
   }
 
-  const errorMessage = errorCity ? <div>There is no such city. Back to location!</div> : null
-  const spinner = isLoadingCity ? <Loader /> : null
-  const content =
-    !errorCity && !isLoadingCity ? (
-      <>
-        <City> {city}</City>
-        <Country> {country}</Country>
-        <CitySearch ref={cityRef} placeholder={city} onKeyPress={handleEnterCity} type="search" />
-        <ApiControl />
-        <RequireLoading>
-          <CurrentWeather />
-        </RequireLoading>
-      </>
-    ) : null
+  if (errorCity) {
+    return <div>There is no such city. Back to location!</div>
+  }
 
-  return (
+  if (isLoadingCity) {
+    return <Loader />
+  }
+
+  return !errorCity && !isLoadingCity ? (
     <CityInfoContainer>
-      {errorMessage}
-      {spinner}
-      {content}
+      <City> {city}</City>
+      <Country> {country}</Country>
+      <CitySearch ref={cityRef} placeholder={city} onKeyPress={handleEnterCity} type="search" />
+      <ApiControl />
+      <RequireLoading>
+        <CurrentWeather />
+      </RequireLoading>
     </CityInfoContainer>
-  )
+  ) : null
 }
