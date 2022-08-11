@@ -73,3 +73,12 @@ export const Button = styled.button`
     background-color: ${({ theme }) => theme.colors.darkorange};
   }
 `
+export const HourItem = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: ${({ theme }) => theme.spaces[1]}px;
+  @media (max-width: ${({ theme }) => theme.size.small}px) {
+    flex-direction: column;
+  }
+`
