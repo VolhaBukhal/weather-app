@@ -5,31 +5,29 @@ import { HourlyForecast } from '@components/HourlyForecast'
 import { Clock } from '@components/Clock'
 import { AuthCalendar } from '@components/AuthCalendar'
 import { ErrorBoundary } from '@components/ErrorBoundary'
-import { DisplayContainer, DisplayTopItem, DisplayItemColumn, DisplayItemShadowed } from './styled'
+import { Wrapper, TopContainer, TimeAndCalendarBlock, BottomContainer } from './styled'
 
 export const Display = () => (
-  <DisplayContainer>
-    <DisplayTopItem>
-      <DisplayItemColumn>
+  <Wrapper>
+    <TopContainer>
+      <TimeAndCalendarBlock>
         <Clock />
         <AuthCalendar />
-      </DisplayItemColumn>
+      </TimeAndCalendarBlock>
       <ErrorBoundary>
         <CityInfo />
       </ErrorBoundary>
-    </DisplayTopItem>
+    </TopContainer>
 
-    <DisplayItemShadowed>
-      <RequireLoading>
-        <ErrorBoundary>
+    <BottomContainer>
+      <ErrorBoundary>
+        <RequireLoading>
           <HourlyForecast />
-        </ErrorBoundary>
-      </RequireLoading>
-      <RequireLoading>
-        <ErrorBoundary>
+        </RequireLoading>
+        <RequireLoading>
           <WeekForecast />
-        </ErrorBoundary>
-      </RequireLoading>
-    </DisplayItemShadowed>
-  </DisplayContainer>
+        </RequireLoading>
+      </ErrorBoundary>
+    </BottomContainer>
+  </Wrapper>
 )

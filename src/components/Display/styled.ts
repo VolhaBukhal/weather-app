@@ -8,7 +8,7 @@ const HEIGHT_SHADOWED = '45'
 const BGC_LIGHT_MASK = 'rgba(0, 0, 0, 0.2)'
 const BGC_DARK_MASK = 'rgba(16, 17, 19, 0.6)'
 
-export const DisplayContainer = styled.div`
+export const Wrapper = styled.div`
   width: ${WIDTH_CONTAINER_LARGE}vw;
   height: ${HEIGHT_CONTAINER_LARGE}vh;
   display: flex;
@@ -27,7 +27,7 @@ export const DisplayContainer = styled.div`
     box-shadow: none;
   }
 `
-export const DisplayTopItem = styled.div`
+export const TopContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: start;
@@ -40,7 +40,7 @@ export const DisplayTopItem = styled.div`
   }
 `
 
-export const DisplayItemShadowed = styled(DisplayTopItem)`
+export const BottomContainer = styled(TopContainer)`
   height: ${HEIGHT_SHADOWED}%;
   background-color: ${BGC_DARK_MASK};
   gap: ${({ theme }) => theme.spaces[4]}px;
@@ -49,6 +49,6 @@ export const DisplayItemShadowed = styled(DisplayTopItem)`
   }
 `
 
-export const DisplayItemColumn = styled(DisplayTopItem)`
+export const TimeAndCalendarBlock = styled(TopContainer)`
   flex-direction: column;
 `
