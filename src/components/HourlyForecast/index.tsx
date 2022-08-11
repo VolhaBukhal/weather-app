@@ -1,9 +1,7 @@
 import { v4 as uuid } from 'uuid'
-
 import { useAppSelector } from '@hooks/redux.hooks'
 import { getHourFromString, getLocalHourForHourlyForecastOpenWeather } from '@utils/time'
 import { APIs } from '@constants/api'
-
 import { IconSmall, TemperatureValue, IconSmallOpenWeather } from '@components/styled'
 import { Container, RestrictedContainer, Item, Heading } from './styled'
 

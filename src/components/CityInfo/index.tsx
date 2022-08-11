@@ -1,15 +1,11 @@
 import { KeyboardEvent, useEffect, useRef, RefObject } from 'react'
-
 import { useAppSelector, useAppDispatch } from '@hooks/redux.hooks'
 import { setIsLoadingCity, setIsLoadingAccuWeather } from '@store/reducers/loadingSlice'
 import { setCity } from '@store/reducers/locationSlice'
-
 import { RequireLoading } from '@hoc/RequireLoading'
-
 import { CurrentWeather } from '@components/CurrentWeather'
 import { Loader } from '@components/Loader'
 import { ApiControl } from '@components/ApiControl'
-
 import { CityInfoContainer, CitySearch, City, Country } from './styled'
 
 export const CityInfo = () => {

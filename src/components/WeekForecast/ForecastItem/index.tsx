@@ -1,9 +1,7 @@
 import { IAccuWeatherOneDay, IOpenWeatherOneDayItem } from '@interfaces/index'
-
 import { useAppSelector } from '@hooks/redux.hooks'
 import { APIs } from '@constants/api'
 import { getDayNameFromString } from '@utils/time'
-
 import { Icon, IconOpenWeather, TemperatureValueBig } from '@components/styled'
 import { Item, DayName } from './styled'
 

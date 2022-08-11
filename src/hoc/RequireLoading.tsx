@@ -1,7 +1,5 @@
 import { useAppSelector } from '@hooks/redux.hooks'
-
 import { Loader } from '@components/Loader'
-
 import { APIs } from '@constants/api'
 import { RequireLoadingProps } from './types'
 

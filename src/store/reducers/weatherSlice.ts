@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-
 import { IWeatherData, IOpenWeatherAll, IAccuWeatherCity } from '@interfaces/index'
 
 const initialState: IWeatherData = {

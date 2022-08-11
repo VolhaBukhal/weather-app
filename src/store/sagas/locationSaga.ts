@@ -1,14 +1,11 @@
 import { put, call, takeEvery } from 'redux-saga/effects'
-
 import { setLocationFromIP } from '@store/reducers/locationSlice'
 import {
   setIsLoadingCity,
   setLoadingIsFinishedCity,
   setErrorCity,
 } from '@store/reducers/loadingSlice'
-
 import { fetchInitialLocation } from '@utils/api/location'
-
 import { ILocationData } from '@interfaces/index'
 
 function* getInitialLocationWorker() {

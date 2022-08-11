@@ -1,5 +1,4 @@
 import { useAppSelector } from '@hooks/redux.hooks'
-
 import { Display } from '@components/Display'
 import { Container } from './styled'
 

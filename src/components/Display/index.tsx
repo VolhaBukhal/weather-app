@@ -1,12 +1,10 @@
 import { RequireLoading } from '@hoc/RequireLoading'
-
 import { CityInfo } from '@components/CityInfo'
 import { WeekForecast } from '@components/WeekForecast'
 import { HourlyForecast } from '@components/HourlyForecast'
 import { Clock } from '@components/Clock'
 import { AuthCalendar } from '@components/AuthCalendar'
 import { ErrorBoundary } from '@components/ErrorBoundary'
-
 import { DisplayContainer, DisplayTopItem, DisplayItemColumn, DisplayItemShadowed } from './styled'
 
 export const Display = () => (

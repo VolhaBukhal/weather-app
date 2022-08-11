@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-
 import { IEventsListResponse, IEventState } from '@interfaces/index'
 
 const initialState: IEventState = {

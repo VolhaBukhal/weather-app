@@ -1,7 +1,5 @@
 import { takeLatest, put, call } from 'redux-saga/effects'
-
 import { setEvents, isSynchronize } from '@store/reducers/eventsSlice'
-
 import { apiCalendar } from '@utils/api/googlecalendar'
 import { IEventsListResponse } from '@interfaces/index'
 

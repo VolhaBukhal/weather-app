@@ -1,5 +1,4 @@
 import ApiCalendar from 'react-google-calendar-api'
-
 import { GOOGLE_CLIENT_ID, GOOGLE_API_KEY } from '@constants/api'
 
 const config = {

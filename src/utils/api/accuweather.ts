@@ -6,7 +6,6 @@ import {
   ACCUWEATHER_URL_HOURLY,
   headers,
 } from '@constants/api'
-
 import {
   IAccuWeatherData,
   IAccuWeatherCurrent,

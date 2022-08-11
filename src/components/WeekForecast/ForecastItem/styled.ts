@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-
 import { BOTTOM_COLORED_RADIUS } from '@components/styled'
 
 const WIDTH = '100'

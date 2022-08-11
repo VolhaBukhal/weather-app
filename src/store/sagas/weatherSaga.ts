@@ -8,16 +8,13 @@ import {
   SelectEffect,
   PutEffect,
 } from 'redux-saga/effects'
-
 import {
   getCityAccuWeather,
   getAccuWeatherCurrentConditions,
   getAccuWeatherFiveDays,
   getAccuWeatherHourly,
 } from '@utils/api/accuweather'
-
 import { getOpenWeatherCoordinates, getOpenWeatherOneCall } from '@utils/api/openweather'
-
 import {
   setIsLoadingAccuWeather,
   setErrorWeather,
@@ -27,7 +24,6 @@ import {
 } from '@store/reducers/loadingSlice'
 import { setDefaultLocation, setCountry, setCurrentIcon } from '@store/reducers/locationSlice'
 import { setAccuWeather, setOpenWeather } from '@store/reducers/weatherSlice'
-
 import {
   IAccuWeatherData,
   IAccuWeatherCity,

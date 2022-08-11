@@ -1,5 +1,4 @@
 import { useState, useEffect, useMemo } from 'react'
-
 import { getWholeDayInfoFromString, getDigitClockFromString } from '@utils/time'
 import { Wrapper, TimeItem, Time, DayInfo, DayPart } from './styled'
 

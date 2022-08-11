@@ -10,9 +10,7 @@ import {
   persistReducer,
 } from 'redux-persist'
 import createSagaMiddleware from 'redux-saga'
-
 import storage from 'redux-persist/lib/storage'
-
 import { rootSaga } from '@store/sagas/index'
 import location from './reducers/locationSlice'
 import loading from './reducers/loadingSlice'

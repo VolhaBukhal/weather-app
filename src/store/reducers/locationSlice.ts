@@ -1,7 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-
 import { ILocationData, ILocationState } from '@interfaces/index'
-
 import { APIs } from '@constants/api'
 
 const initialState: ILocationState = {

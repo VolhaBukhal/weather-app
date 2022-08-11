@@ -1,8 +1,6 @@
 import { useAppSelector } from '@hooks/redux.hooks'
-
 import { APIs } from '@constants/api'
 import { getLocalTimeOpenWeather } from '@utils/time'
-
 import { TemperatureValue } from '@components/styled'
 import { WeatherDescription } from './styled'
 

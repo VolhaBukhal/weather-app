@@ -1,5 +1,4 @@
 import { all, call } from 'redux-saga/effects'
-
 import { initialLocationWatcher } from './locationSaga'
 import { accuWeatherWatcher } from './weatherSaga'
 import { loadUpcomingEventsWatcher } from './calendarSaga'

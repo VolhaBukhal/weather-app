@@ -1,9 +1,7 @@
 import { v4 as uuid } from 'uuid'
-
 import { useAppSelector } from '@hooks/redux.hooks'
 import { APIs } from '@constants/api'
 import { IAccuWeatherOneDay, IOpenWeatherOneDayItem } from '@interfaces/index'
-
 import { ForecastItem } from './ForecastItem'
 import {
   HeadlineInfo,

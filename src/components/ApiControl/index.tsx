@@ -1,8 +1,6 @@
 import { ChangeEvent } from 'react'
-
 import { useAppDispatch, useAppSelector } from '@hooks/redux.hooks'
 import { setCurrentApi } from '@store/reducers/locationSlice'
-
 import { APIs } from '@constants/api'
 import { Wrapper, RadioButton, RadioButtonLabel, Item, Label } from './styled'
 

@@ -1,5 +1,4 @@
 import { IEventItem } from '@interfaces/index'
-
 import { Item, ItemTime, Time, Summary } from './styled'
 
 export const EventItem = ({ start, end, summary }: IEventItem) => {

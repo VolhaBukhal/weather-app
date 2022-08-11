@@ -1,5 +1,4 @@
 import { IP_LOCATION_URL, IP_LOCATION_KEY } from '@constants/api'
-
 import { ILocationData } from '@interfaces/index'
 
 export const fetchInitialLocation = async (): Promise<ILocationData> => {

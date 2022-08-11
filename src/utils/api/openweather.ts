@@ -3,7 +3,6 @@ import {
   OPENWEATHER_URL_ONE_CALL,
   OPENWEATHER_URL_CITY_COORDINATES,
 } from '@constants/api'
-
 import { IOpenWeatherCoordinates, IOpenWeatherAll } from '@interfaces/index'
 
 export const getOpenWeatherCoordinates = async (

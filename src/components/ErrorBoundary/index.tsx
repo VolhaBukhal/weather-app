@@ -1,5 +1,4 @@
 import { Component, ErrorInfo } from 'react'
-
 import { ErrorBoundaryProps, ErrorBoundaryState } from './types'
 import { ErrorWrapper, Heading } from './styled'
 

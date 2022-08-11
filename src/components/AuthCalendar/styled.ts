@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-
 import { SCROLL } from '@components/styled'
 
 const HEIGHT = '180'
