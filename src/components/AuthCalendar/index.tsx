@@ -1,4 +1,4 @@
-import { useState, MouseEvent } from 'react'
+import { useState, MouseEvent, memo } from 'react'
 import { v4 as uuid } from 'uuid'
 import { apiCalendar } from '@utils/api/googlecalendar'
 import { useAppDispatch, useAppSelector } from '@hooks/redux.hooks'
@@ -8,7 +8,7 @@ import { EventItem } from '@components/EventList'
 import { Button } from '@components/styled'
 import { Container } from './styled'
 
-export const AuthCalendar = () => {
+export const AuthCalendar = memo(() => {
   const [isAuthorized, setIsAuthorized] = useState(false)
   const events = useAppSelector((store) => store.events.items)
   const dispatch = useAppDispatch()
@@ -17,7 +17,9 @@ export const AuthCalendar = () => {
     const buttonLabel = event.currentTarget.textContent
     if (buttonLabel === ButtonLabels.SIGN_IN) {
       apiCalendar.handleAuthClick()
-      setIsAuthorized(true)
+      setTimeout(() => {
+        setIsAuthorized(true)
+      }, 3000)
     } else {
       dispatch(isSynchronize())
     }
@@ -28,7 +30,11 @@ export const AuthCalendar = () => {
       <Button type="button" onClick={handleItemClick}>
         {!isAuthorized ? ButtonLabels.SIGN_IN : ButtonLabels.SYNCHRONIZE}
       </Button>
-      {events.length > 0 && events.map((item) => <EventItem key={uuid()} {...item} />)}
+      {events.length > 0 && isAuthorized ? (
+        events.map((item) => <EventItem key={uuid()} {...item} />)
+      ) : (
+        <p>No events...</p>
+      )}
     </Container>
   )
-}
+})

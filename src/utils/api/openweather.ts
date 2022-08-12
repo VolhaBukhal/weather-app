@@ -16,7 +16,6 @@ export const getOpenWeatherCoordinates = async (
     const data = await response.json()
     return data[0]
   } catch (e) {
-    console.log(e)
     return new Error(`There is no such city`)
   }
 }
@@ -36,7 +35,6 @@ export const getOpenWeatherOneCall = async (
     const data: IOpenWeatherAll = await response.json()
     return data
   } catch (e) {
-    console.log(e)
     return new Error(`Numbers amounts are ended ${e}`)
   }
 }

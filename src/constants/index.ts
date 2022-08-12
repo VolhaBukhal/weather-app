@@ -1,6 +1,6 @@
 export enum ButtonLabels {
   SIGN_IN = 'Sing in your account',
-  SYNCHRONIZE = 'Loud upcoming events',
+  SYNCHRONIZE = 'Update list of upcoming events',
 }
 
 export const BACKGROUNDS_ACCUWEATHER = [

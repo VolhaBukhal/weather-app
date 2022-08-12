@@ -36,8 +36,7 @@ export const getAccuWeatherCurrentConditions = async (
     const data: IAccuWeatherCurrent[] = await response.json()
     return data[0]
   } catch (e) {
-    console.log(e)
-    return new Error(`Numbers amounts are ended ${e}`)
+    return new Error(`Numbers amounts are ended`)
   }
 }
 

@@ -22,7 +22,7 @@ export const Container = styled.div<{
     `url(${process.env.PUBLIC_URL}/images/bgs/${
       currentApi === APIs.ACCUWEATHER
         ? BACKGROUNDS_ACCUWEATHER[iconNumber as number] || 2
-        : BACKGROUNDS_OPENWEATHER[iconNumber as keyof typeof BACKGROUNDS_OPENWEATHER]
+        : BACKGROUNDS_OPENWEATHER[iconNumber as keyof typeof BACKGROUNDS_OPENWEATHER] || 2
     }.webp)`};
   @media (min-width: ${({ theme }) => theme.size.small}px) {
     height: 100%;
